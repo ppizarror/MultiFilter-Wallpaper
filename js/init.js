@@ -3,10 +3,11 @@ var colorThief = new ColorThief();
 
 // Local vars
 var files = {};
-var blur;
+var blur = 0;
 var israndom;
 var selectedimg;
 var randomtime;
+var timedrandomizefun;
 
 function updateFileList(currentFiles) {}
 
@@ -28,6 +29,14 @@ window.wallpaperPropertyListener = {
             if (properties.customrandomdirectory.value) {
                 nextRandomImage();
                 israndom = true;
+                if (randomtime > 0 && israndom) {
+                    timedrandomizefun = setTimeout(nextRandomImage, randomtime);
+                } else {
+                    try {
+                        clearTimeout(timedrandomizefun);
+                        consolemsg('Randomized function stopped.');
+                    } catch (e) {} finally {}
+                }
             }
         }
 
@@ -37,6 +46,10 @@ window.wallpaperPropertyListener = {
                 setWallpaper(properties.customimage.value);
                 israndom = false;
                 selectedimg = properties.customimage.value;
+                try {
+                    clearTimeout(timedrandomizefun);
+                    consolemsg('Randomized function stopped.');
+                } catch (e) {} finally {}
             }
         }
 
@@ -44,8 +57,20 @@ window.wallpaperPropertyListener = {
         if (properties.blur) {
             blur = properties.blur.value;
             setWallpaper(selectedimg);
-            properties.schemecolor.value = '1 1 1';
-            consolemsg(JSON.stringify(properties));
+        }
+
+        // Minute transition
+        if (properties.minutes) {
+            randomtime = properties.minutes * 60000;
+            if (randomtime > 0 && israndom) {
+                timedrandomizefun = setTimeout(nextRandomImage, randomtime);
+                consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes));
+            } else {
+                try {
+                    clearTimeout(timedrandomizefun);
+                    consolemsg('Randomized function stopped.');
+                } catch (e) {} finally {}
+            }
         }
 
     },

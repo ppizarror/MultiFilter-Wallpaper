@@ -9,48 +9,49 @@
                 "type": "color",
                 "value": "0 0 0"
             },
-            "background-image" :
-			{
-				"order" : 1,
-				"text" : "<h4>Background image</h4>",
-				"type" : "text",
-				"value" : false
-			},
+            "background-image": {
+                "order": 1,
+                "text": "<h4>Background image</h4>",
+                "type": "text",
+                "value": false
+            },
             "customimage": {
                 "text": "User image",
                 "type": "file",
-                "order": 2
+                "order": 2,
+                "value": "",
+                "condition": "customrandomdirectory.value == ''"
             },
             "customrandomdirectory": {
                 "text": "Random directory",
                 "type": "directory",
                 "mode": "ondemand",
-                "order": 3
+                "order": 3,
+                "value": "",
+                "condition": "customimage.value == ''"
             },
-            "background-property" :
-			{
-				"order" : 4,
-				"text" : "<h4>Background properties</h4>",
-				"type" : "text",
-				"value" : false
-			},
-            "blur" :
-            {
-                "text" : "Blur (px)",
-                "type" : "slider",
-                "value" : 3,
-                "min" : 0,
-                "max" : 10,
+            "background-property": {
+                "order": 4,
+                "text": "<h4>Background properties</h4>",
+                "type": "text",
+                "value": false
+            },
+            "blur": {
+                "text": "Blur (px)",
+                "type": "slider",
+                "value": 3,
+                "min": 0,
+                "max": 10,
                 "order": 5
             },
-            "minutes" :
-            {
-                "text" : "Time transition (min)",
-                "type" : "slider",
-                "value" : 15,
-                "min" : 0,
-                "max" : 10,
-                "order": 6
+            "minutes": {
+                "text": "Time transition (min)",
+                "type": "slider",
+                "value": 15,
+                "min": 0,
+                "max": 60,
+                "order": 6,
+                "condition": "customimage.value == ''"
             }
         }
     },
