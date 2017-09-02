@@ -29,6 +29,11 @@ function setWallpaper(file) {
         consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
     } else {
         $('#background-img').css('background-color', defaultcolorcss);
+        $('#background-img').css('background-image', '');
+        $('#background-img').css('-webkit-filter', '');
+        $('#background-img').css('filter', '');
+        $('#background-img').css('transform', '');
+        consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
     }
 }
 

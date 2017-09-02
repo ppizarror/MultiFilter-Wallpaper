@@ -62,7 +62,7 @@ window.wallpaperPropertyListener = {
 
         // Minute transition
         if (properties.minutes) {
-            randomtime = properties.minutes * 60000;
+            randomtime = properties.minutes.value * 60000;
             if (randomtime > 0 && israndom) {
                 timedrandomizefun = setTimeout(nextRandomImage, randomtime);
                 consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes));
