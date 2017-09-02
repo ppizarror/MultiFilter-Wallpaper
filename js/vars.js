@@ -26,7 +26,7 @@ SOFTWARE.
 
 // Theme version and date
 var themedate = '(02/09/2017)';
-var themeversion = 1.6;
+var themeversion = 1.7;
 
 // Global variables
 var blur;
@@ -38,7 +38,7 @@ var files = {};
 var hideauthorbool;
 var israndom;
 var maxrandomiterations = 500;
-var maxwordlengthdirs = 35;
+var maxwordlengthdirs = 30;
 var randomimgbool = false;
 var randomlimitsup = 0.05;
 var randomtime;

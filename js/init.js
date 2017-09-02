@@ -139,14 +139,14 @@ window.wallpaperPropertyListener = {
         // Background color if no image
         if (properties.backgroundcolor) {
             defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
-            consolemsg('Default background color: {0}.'.format(defaultcolorcss));
+            consolemsg('Default background color: {0}.'.format(setRgbLineMsg(defaultcolorcss)));
             setWallpaper();
         }
 
         // Console font color
         if (properties.consolefontcolor) {
             defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
-            consolemsg('Console font color: {0}.'.format(defaultconsolefontcolor));
+            consolemsg('Console font color: {0}.'.format(setRgbLineMsg(defaultconsolefontcolor)));
             $('#consoletext').css('color', defaultconsolefontcolor);
             $('#author').css('color', 'rgb(255, 255, 255)');
         }
@@ -154,7 +154,7 @@ window.wallpaperPropertyListener = {
         // Console background color
         if (properties.consolebgcolor) {
             defaultconsolebgcolor = createRGBColor(properties.consolebgcolor.value);
-            consolemsg('Console background color: {0}.'.format(defaultconsolebgcolor));
+            consolemsg('Console background color: {0}.'.format(setRgbLineMsg(defaultconsolebgcolor)));
             $('#consoletext').css('background-color', defaultconsolebgcolor);
         }
 

@@ -79,7 +79,7 @@ function setWallpaper(file, showmsg) {
                     setWallpaper(selectedimg, true);
                 } else {
                     if (showmsg && defaultcolorcss != '') {
-                        consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
+                        consolemsg('Deleted wallpaper image and set color {0}.'.format(setRgbLineMsg(defaultcolorcss)));
                     }
                 }
             } catch (e) {

@@ -79,3 +79,8 @@ function parseException(e) {
     // Set exception message
     return "<span class='msgexception'>EXCEPTION!</span> {0}".format(e);
 }
+
+function setRgbLineMsg(c) {
+    // Create span with same color as message
+    return '<span style="color: {0}"><b>{0}</b></span>'.format(c);
+}
