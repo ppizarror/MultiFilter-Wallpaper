@@ -80,21 +80,21 @@
                 "value": false
             },
             "consolefontcolor": {
-                "condition": "showconsole.value",
+                "condition": "showconsole.value && advancedoptions.value",
                 "order": 12,
                 "text": "Console font color",
                 "type": "color",
                 "value": "0 0 0"
             },
             "consolebgcolor": {
-                "condition": "showconsole.value",
+                "condition": "showconsole.value && advancedoptions.value",
                 "order": 13,
                 "text": "Console background color",
                 "type": "color",
                 "value": "0.45 0.45 0.45"
             },
             "hideauthor": {
-                "condition": "showconsole.value",
+                "condition": "showconsole.value && advancedoptions.value",
                 "order": 14,
                 "text": "Hide author",
                 "type": "bool",

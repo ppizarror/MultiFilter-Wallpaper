@@ -33,12 +33,13 @@ var defaultcolorcss;
 var defaultconsolebgcolor;
 var defaultconsolefontcolor;
 var files = {};
+var hideauthorbool;
 var israndom = false;
 var randomtime = 0;
-var selectedimg;
+var selectedfolder = '';
+var selectedimg = '';
 var showconsole = false;
 var timedrandomizefun;
-var hideauthorbool;
 
 function updateFileList(mode, currentFiles) {
     // Write status message on console
@@ -184,3 +185,9 @@ window.wallpaperPropertyListener = {
         updateFileList('del', files[propertyName]);
     }
 };
+
+if (selectedimg != '' || selectedfolder != '') {
+    consolemsg('A previous status was found, settings loaded.');
+} else {
+    consolemsg('No previous status were found.');
+}
