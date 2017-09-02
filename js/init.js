@@ -38,6 +38,7 @@ var randomtime = 0;
 var selectedimg;
 var showconsole = false;
 var timedrandomizefun;
+var hideauthorbool;
 
 function updateFileList(mode, currentFiles) {
     // Write status message on console
@@ -138,6 +139,7 @@ window.wallpaperPropertyListener = {
             defaultconsolefontcolor = 'rgb(' + defaultconsolefontcolor + ')';
             consolemsg('Console font color: {0}.'.format(defaultconsolefontcolor));
             $('#consoletext').css('color', defaultconsolefontcolor);
+            $('#author').css('color', defaultconsolefontcolor);
         }
 
         // Console background color
@@ -155,6 +157,12 @@ window.wallpaperPropertyListener = {
         if (properties.showconsole) {
             showconsole = properties.showconsole.value;
             setConsoleStatus(showconsole);
+        }
+
+        // Hide/Unhide author
+        if (properties.hideauthor) {
+            hideauthorbool = properties.hideauthor.value;
+            setAuthorStatus(!hideauthorbool);
         }
 
     },

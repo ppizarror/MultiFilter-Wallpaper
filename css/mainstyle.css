@@ -59,7 +59,7 @@ body {
     font-size: 12px;
     text-align: left;
     opacity: 0.5;
-    display: block;
+    display: none;
     margin-right: 45px;
     margin-top: -30px;
 }
@@ -82,7 +82,7 @@ body {
 #author {
     display: inline-block;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 33px;
     text-align: center;
 }
 

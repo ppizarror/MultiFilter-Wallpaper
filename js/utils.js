@@ -26,7 +26,7 @@ SOFTWARE.
 
 // Console messages
 var consolemsglist = [];
-var maxmsg = 5;
+var maxmsg = 6;
 
 function consolemsg(msg) {
     // Create a message on the console
@@ -53,6 +53,15 @@ function setConsoleStatus(status) {
         $('#console').css('display', 'block');
     } else {
         $('#console').css('display', 'none');
+    }
+}
+
+function setAuthorStatus(status) {
+    // Enable/Disable author under console
+    if (status) {
+        $('#author').css('display', 'block');
+    } else {
+        $('#author').css('display', 'none');
     }
 }
 

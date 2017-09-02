@@ -93,6 +93,13 @@
                 "type": "color",
                 "value": "0.45 0.45 0.45"
             },
+            "hideauthor": {
+                "condition": "showconsole.value",
+                "order": 14,
+                "text": "Hide author",
+                "type": "bool",
+                "value": false
+            },
         }
     },
     "title": "Blur-Wallpaper",
