@@ -1,6 +1,6 @@
 /*
 BLUR-WALLPAPER.
-Project website: https://github.com/ppizarror/blur-wallpaper
+Project repo: https://github.com/ppizarror/blur-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
@@ -23,23 +23,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
-// Load library functions
-var colorThief = new ColorThief();
-
-// Local vars
-var blur = 0;
-var defaultcolorcss;
-var defaultconsolebgcolor;
-var defaultconsolefontcolor;
-var files = {};
-var hideauthorbool;
-var israndom = false;
-var randomtime = 0;
-var selectedfolder = '';
-var selectedimg = '';
-var showconsole = false;
-var timedrandomizefun;
 
 function updateFileList(mode, currentFiles) {
     // Write status message on console
@@ -66,6 +49,11 @@ function nextRandomImage() {
     window.wallpaperRequestRandomFileForProperty('customrandomdirectory', randomImageResponse);
 }
 
+function setWallpaperSingleImage() {
+    // Set single image
+    setWallpaper(selectedimg);
+}
+
 // Property Listener
 window.wallpaperPropertyListener = {
     applyUserProperties: function(properties) {
@@ -73,29 +61,42 @@ window.wallpaperPropertyListener = {
         // Load random directory
         if (properties.customrandomdirectory) {
             if (properties.customrandomdirectory.value) {
-                consolemsg('Set random directory {0}.'.format(properties.customrandomdirectory.value));
-                nextRandomImage();
-                israndom = true;
-                if (randomtime > 0 && israndom) {
-                    clearRandomFunTimer();
-                    timedrandomizefun = setTimeout(nextRandomImage, randomtime);
-                    consolemsg('Randomized function set to {0} minutes.'.format(randomtime / 60000));
-                } else {
-                    clearRandomFunTimer();
-                }
-            }
-        }
-
-        // Read single selected image
-        if (properties.customimage) {
-            if (properties.customimage.value) {
-                setWallpaper(properties.customimage.value);
-                israndom = false;
-                selectedimg = properties.customimage.value;
                 try {
-                    clearTimeout(timedrandomizefun);
-                    consolemsg('Randomized function stopped.');
-                } catch (e) {} finally {}
+                    consolemsg('Set random directory {0}.'.format(properties.customrandomdirectory.value));
+                    israndom = true;
+                    selectedfolder = properties.customrandomdirectory.value;
+                    selectedimg = '';
+                    consolemsg(randomtime);
+                    consolemsg('hola');
+                    nextRandomImage();
+                    nextRandomImage();
+                    if (randomtime > 0 && israndom) {
+                        clearRandomFunTimer();
+                        consolemsg('Randomized function set to {0} minutes.'.format(randomtime / 60000));
+                        timedrandomizefun = setTimeout(nextRandomImage, randomtime);
+                    } else {
+                        clearRandomFunTimer();
+                    }
+                    clearSingleImageFunTimer();
+                } catch (e) {
+                    consolemsg(parseException(e));
+                } finally {}
+
+            }
+        } else
+        // Read single selected image
+        {
+            if (properties.customimage) {
+                if (properties.customimage.value) {
+                    setWallpaper(properties.customimage.value);
+                    israndom = false;
+                    selectedimg = properties.customimage.value;
+                    selectedfolder = '';
+                    properties.customrandomdirectory.value = '';
+                    clearRandomFunTimer();
+                    clearSingleImageFunTimer();
+                    timedsingleimgfun = setTimeout(setWallpaperSingleImage, 60000);
+                }
             }
         }
 
@@ -122,22 +123,14 @@ window.wallpaperPropertyListener = {
 
         // Background color if no image
         if (properties.backgroundcolor) {
-            defaultcolorcss = properties.backgroundcolor.value.split(' ');
-            defaultcolorcss = defaultcolorcss.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            defaultcolorcss = 'rgb(' + defaultcolorcss + ')';
+            defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
             consolemsg('Default background color: {0}.'.format(defaultcolorcss));
             setWallpaper();
         }
 
         // Console font color
         if (properties.consolefontcolor) {
-            defaultconsolefontcolor = properties.consolefontcolor.value.split(' ');
-            defaultconsolefontcolor = defaultconsolefontcolor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            defaultconsolefontcolor = 'rgb(' + defaultconsolefontcolor + ')';
+            defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
             consolemsg('Console font color: {0}.'.format(defaultconsolefontcolor));
             $('#consoletext').css('color', defaultconsolefontcolor);
             $('#author').css('color', defaultconsolefontcolor);
@@ -145,11 +138,7 @@ window.wallpaperPropertyListener = {
 
         // Console background color
         if (properties.consolebgcolor) {
-            defaultconsolebgcolor = properties.consolebgcolor.value.split(' ');
-            defaultconsolebgcolor = defaultconsolebgcolor.map(function(c) {
-                return Math.ceil(c * 255);
-            });
-            defaultconsolebgcolor = 'rgb(' + defaultconsolebgcolor + ')';
+            defaultconsolebgcolor = createRGBColor(properties.consolebgcolor.value);
             consolemsg('Console background color: {0}.'.format(defaultconsolebgcolor));
             $('#consoletext').css('background-color', defaultconsolebgcolor);
         }
@@ -185,9 +174,3 @@ window.wallpaperPropertyListener = {
         updateFileList('del', files[propertyName]);
     }
 };
-
-if (selectedimg != '' || selectedfolder != '') {
-    consolemsg('A previous status was found, settings loaded.');
-} else {
-    consolemsg('No previous status were found.');
-}

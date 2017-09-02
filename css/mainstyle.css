@@ -1,6 +1,6 @@
 /*
 BLUR-WALLPAPER.
-Project website: https://github.com/ppizarror/blur-wallpaper
+Project repo: https://github.com/ppizarror/blur-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
@@ -89,5 +89,10 @@ body {
 #author a {
     text-decoration: none;
     color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.msgexception {
+    color: rgb(255, 0, 0);
     font-weight: bold;
 }

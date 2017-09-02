@@ -1,6 +1,6 @@
 /*
 BLUR-WALLPAPER.
-Project website: https://github.com/ppizarror/blur-wallpaper
+Project repo: https://github.com/ppizarror/blur-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
@@ -24,52 +24,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Console messages
-var consolemsglist = [];
-var maxmsg = 6;
-
-function consolemsg(msg) {
-    // Create a message on the console
-    try {
-
-        // Add msg to list
-        consolemsglist.push('<b>[{0}]</b> {1}'.format(new Date().format('m/d h:i:s'), msg));
-        if (consolemsglist.length > maxmsg) {
-            consolemsglist.splice(1, 1);
-        }
-
-        // Concatenate all messages and write to console
-        msgc = '';
-        for (i = 0; i < consolemsglist.length; i++) {
-            msgc += consolemsglist[i] + '<br>';
-        }
-        $('#console #consoletext').html(msgc);
-    } catch (e) {} finally {}
-}
-
-function setConsoleStatus(status) {
-    // Enable/Disable console
-    if (status) {
-        $('#console').css('display', 'block');
-    } else {
-        $('#console').css('display', 'none');
-    }
-}
-
-function setAuthorStatus(status) {
-    // Enable/Disable author under console
-    if (status) {
-        $('#author').css('display', 'block');
-    } else {
-        $('#author').css('display', 'none');
-    }
-}
-
 function clearRandomFunTimer() {
-    // Delete timer
+    // Delete timer of random wallpaper
     try {
         clearTimeout(timedrandomizefun);
         consolemsg('Randomized function stopped.');
+    } catch (e) {} finally {}
+}
+
+function clearSingleImageFunTimer() {
+    // Delete timer of single image wallpaper
+    try {
+        clearTimeout(timedsingleimgfun);
+        consolemsg('Single image function stopped.');
     } catch (e) {} finally {}
 }
 
@@ -92,14 +59,11 @@ function setWallpaper(file) {
     }
 }
 
-// String format
-if (!String.prototype.format) {
-    String.prototype.format = function() {
-        var args = arguments;
-        return this.replace(/{(\d+)}/g, function(match, number) {
-            return typeof args[number] != 'undefined' ?
-                args[number] :
-                match;
-        });
-    };
+function createRGBColor(colorstr) {
+    // Create color from sting
+    color = colorstr.split(' ');
+    color = color.map(function(c) {
+        return Math.ceil(c * 255);
+    });
+    return 'rgb(' + color + ')';
 }
