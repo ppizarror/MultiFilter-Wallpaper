@@ -6,7 +6,7 @@
   <img src="http://ppizarror.com/resources/images/blur-wallpaper/main.PNG" alt="Blur-Wallpaper" width="80%px" />
 </p>
 
-<a href="http://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, advanced options, etc.
+<a href="http://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, advanced options, etc.
 
 ## Author
 Author: Pablo Pizarro, 2017.
