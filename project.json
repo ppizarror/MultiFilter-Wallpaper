@@ -1,5 +1,5 @@
 {
-    "description": "Load an image or directory to create a blur wallpaper on your desktop.",
+    "description": "Load an image or directory to create a blur wallpaper on your desktop. Fully customizable.\n Author: Pablo Pizarro @ppizarror.com.",
     "file": "index.html",
     "general": {
         "properties": {
@@ -18,7 +18,7 @@
             },
             "background-image": {
                 "order": 2,
-                "text": "<h4>Background image</h4>",
+                "text": "<h5><b>Background image</b></h5>",
                 "type": "text",
                 "value": false
             },
@@ -39,7 +39,7 @@
             },
             "background-property": {
                 "order": 5,
-                "text": "<h4>Background properties</h4>",
+                "text": "<br><h5><b>Background properties</b></h5>",
                 "type": "text",
                 "value": false,
                 "condition": "customimage.value != '' || customrandomdirectory.value != ''"
@@ -58,12 +58,13 @@
                 "type": "slider",
                 "value": 15,
                 "min": 0,
-                "max": 60,
+                "max": 180,
                 "order": 7,
                 "condition": "customimage.value == '' && customrandomdirectory.value != ''"
             }
         }
     },
     "title": "Blur-Wallpaper",
-    "type": "web"
+    "type": "web",
+    "monetization": false
 }

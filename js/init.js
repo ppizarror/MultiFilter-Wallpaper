@@ -5,38 +5,52 @@ var colorThief = new ColorThief();
 var blur = 0;
 var defaultcolorcss;
 var files = {};
-var israndom;
-var randomtime;
+var israndom = false;
+var randomtime = 0;
 var selectedimg;
 var timedrandomizefun;
 
-function updateFileList(currentFiles) {}
+function updateFileList(mode, currentFiles) {
+    // Write status message on console
+    switch (mode) {
+        case 'add':
+            consolemsg('Added or changed file {0}.'.format(currentFiles));
+            break;
+        case 'del':
+            consolemsg('File {0} deleted.'.format(currentFiles));
+            break;
+        default:
+            break;
+    }
+}
 
 function randomImageResponse(propertyName, filePath) {
+    // Set random wallpaper
     setWallpaper(filePath);
     selectedimg = filePath;
 }
 
 function nextRandomImage() {
+    // Next Random Image
     window.wallpaperRequestRandomFileForProperty('customrandomdirectory', randomImageResponse);
 }
 
-// A global object that can listen to property changes.
+// Property Listener
 window.wallpaperPropertyListener = {
     applyUserProperties: function(properties) {
 
         // Load random directory
         if (properties.customrandomdirectory) {
             if (properties.customrandomdirectory.value) {
+                consolemsg('Set random directory {0}.'.format(properties.customrandomdirectory.value));
                 nextRandomImage();
                 israndom = true;
                 if (randomtime > 0 && israndom) {
+                    clearRandomFunTimer();
                     timedrandomizefun = setTimeout(nextRandomImage, randomtime);
+                    consolemsg('Randomized function set to {0} minutes.'.format(randomtime / 60000));
                 } else {
-                    try {
-                        clearTimeout(timedrandomizefun);
-                        consolemsg('Randomized function stopped.');
-                    } catch (e) {} finally {}
+                    clearRandomFunTimer();
                 }
             }
         }
@@ -64,6 +78,7 @@ window.wallpaperPropertyListener = {
         if (properties.minutes) {
             randomtime = properties.minutes.value * 60000;
             if (randomtime > 0 && israndom) {
+                clearRandomFunTimer();
                 timedrandomizefun = setTimeout(nextRandomImage, randomtime);
                 consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes.value));
             } else {
@@ -87,23 +102,20 @@ window.wallpaperPropertyListener = {
 
     },
     userDirectoryFilesAddedOrChanged: function(propertyName, changedFiles) {
-        // First time that files are sent.
         if (!files.hasOwnProperty(propertyName)) {
             files[propertyName] = changedFiles;
         } else {
             files[propertyName] = files[propertyName].concat(changedFiles);
         }
-        updateFileList(files[propertyName]);
+        updateFileList('add', files[propertyName]);
     },
     userDirectoryFilesRemoved: function(propertyName, removedFiles) {
-        // The user removed files from the directory while the wallpaper was running.
-        // Remove these files from the global array first.
         for (var i = 0; i < removedFiles.length; ++i) {
             var index = files[propertyName].indexOf(removedFiles[i]);
             if (index >= 0) {
                 files[propertyName].splice(index, 1);
             }
         }
-        updateFileList(files[propertyName]);
+        updateFileList('del', files[propertyName]);
     }
 };

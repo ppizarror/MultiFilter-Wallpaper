@@ -3,20 +3,30 @@ var consolemsglist = [];
 var maxmsg = 5;
 
 function consolemsg(msg) {
-    // Add msg to list
-    consolemsglist.push('[{0}] {1}'.format(new Date().format('m-d-Y h:i:s'), msg));
-    if (consolemsglist.length > maxmsg) {
-        consolemsglist.splice(1, 1);
-    }
-
-    // Concatenate all messages
-    msgc = '';
-    for (i = 0; i < consolemsglist.length; i++) {
-        msgc += consolemsglist[i] + '<br>';
-    }
-
     // Create a message on the console
-    $('#console #consoletext').html(msgc);
+    try {
+
+        // Add msg to list
+        consolemsglist.push('[{0}] {1}'.format(new Date().format('m-d-Y h:i:s'), msg));
+        if (consolemsglist.length > maxmsg) {
+            consolemsglist.splice(1, 1);
+        }
+
+        // Concatenate all messages and write to console
+        msgc = '';
+        for (i = 0; i < consolemsglist.length; i++) {
+            msgc += consolemsglist[i] + '<br>';
+        }
+        $('#console #consoletext').html(msgc);
+    } catch (e) {} finally {}
+}
+
+function clearRandomFunTimer() {
+    // Delete timer
+    try {
+        clearTimeout(timedrandomizefun);
+        consolemsg('Randomized function stopped.');
+    } catch (e) {} finally {}
 }
 
 function setWallpaper(file) {
@@ -33,6 +43,7 @@ function setWallpaper(file) {
         $('#background-img').css('-webkit-filter', '');
         $('#background-img').css('filter', '');
         $('#background-img').css('transform', '');
+        clearTimeout(timedrandomizefun);
         consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
     }
 }
