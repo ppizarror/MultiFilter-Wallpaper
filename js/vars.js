@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 // Theme version
-var themeversion = 1.5;
+var themeversion = 1.6;
 
 // Global variables
 var blur;
