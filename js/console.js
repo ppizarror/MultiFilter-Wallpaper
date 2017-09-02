@@ -25,16 +25,24 @@ SOFTWARE.
 */
 
 // Console messages
-var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1}</b>'.format(themeversion, themedate)];
+var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
 var maxmsg = 15;
+var msgadded = 1;
 
 function consolemsg(msg) {
     // Create a message on the console
     try {
         // Add msg to list
-        new_message = '<b>[<i>{0}</i>]</b> {1}'.format(new Date().format('m/d h:i:s'), msg);
+        msgstr = '';
+        if (msgadded < 10){
+            msgstr = '0' + msgadded;
+        } else {
+            msgstr = msgadded;
+        }
+        new_message = '{2} <b>[<i>{0}</i>]</b> {1}'.format(new Date().format('m/d H:i:s'), msg, msgstr);
         if (new_message != consolemsglist[consolemsglist.length - 1]) {
             consolemsglist.push(new_message);
+            msgadded += 1;
         }
         if (consolemsglist.length > maxmsg) {
             consolemsglist.splice(1, 1);
