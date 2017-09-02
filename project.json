@@ -79,6 +79,20 @@
                 "type": "bool",
                 "value": false
             },
+            "consolefontcolor": {
+                "condition": "showconsole.value",
+                "order": 12,
+                "text": "Console font color",
+                "type": "color",
+                "value": "0 0 0"
+            },
+            "consolebgcolor": {
+                "condition": "showconsole.value",
+                "order": 13,
+                "text": "Console background color",
+                "type": "color",
+                "value": "0.45 0.45 0.45"
+            },
         }
     },
     "title": "Blur-Wallpaper",

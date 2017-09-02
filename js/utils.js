@@ -33,7 +33,7 @@ function consolemsg(msg) {
     try {
 
         // Add msg to list
-        consolemsglist.push('[{0}] {1}'.format(new Date().format('m-d-Y h:i:s'), msg));
+        consolemsglist.push('<b>[{0}]</b> {1}'.format(new Date().format('m/d h:i:s'), msg));
         if (consolemsglist.length > maxmsg) {
             consolemsglist.splice(1, 1);
         }

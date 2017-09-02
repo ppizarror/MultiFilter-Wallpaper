@@ -30,6 +30,8 @@ var colorThief = new ColorThief();
 // Local vars
 var blur = 0;
 var defaultcolorcss;
+var defaultconsolebgcolor;
+var defaultconsolefontcolor;
 var files = {};
 var israndom = false;
 var randomtime = 0;
@@ -125,6 +127,28 @@ window.wallpaperPropertyListener = {
             defaultcolorcss = 'rgb(' + defaultcolorcss + ')';
             consolemsg('Default background color: {0}.'.format(defaultcolorcss));
             setWallpaper();
+        }
+
+        // Console font color
+        if (properties.consolefontcolor) {
+            defaultconsolefontcolor = properties.consolefontcolor.value.split(' ');
+            defaultconsolefontcolor = defaultconsolefontcolor.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            defaultconsolefontcolor = 'rgb(' + defaultconsolefontcolor + ')';
+            consolemsg('Console font color: {0}.'.format(defaultconsolefontcolor));
+            $('#consoletext').css('color', defaultconsolefontcolor);
+        }
+
+        // Console background color
+        if (properties.consolebgcolor) {
+            defaultconsolebgcolor = properties.consolebgcolor.value.split(' ');
+            defaultconsolebgcolor = defaultconsolebgcolor.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            defaultconsolebgcolor = 'rgb(' + defaultconsolebgcolor + ')';
+            consolemsg('Console background color: {0}.'.format(defaultconsolebgcolor));
+            $('#consoletext').css('background-color', defaultconsolebgcolor);
         }
 
         // Hide/Unhide console

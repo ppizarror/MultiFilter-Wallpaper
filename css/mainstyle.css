@@ -65,8 +65,6 @@ body {
 }
 
 #consoletext {
-    background-color: rgb(180, 180, 180);
-    color: rgb(0, 0, 0);
     border-color: rgb(59, 59, 59);
     border-width: 1px;
     border-radius: 5px;
@@ -88,7 +86,7 @@ body {
     text-align: center;
 }
 
-#author a{
+#author a {
     text-decoration: none;
     color: rgb(0, 0, 0);
     font-weight: bold;
