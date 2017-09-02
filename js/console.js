@@ -26,7 +26,7 @@ SOFTWARE.
 
 // Console messages
 var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
-var maxmsg = 15;
+var maxmsg = 13;
 var msgadded = 1;
 
 function consolemsg(msg) {
@@ -34,7 +34,7 @@ function consolemsg(msg) {
     try {
         // Add msg to list
         msgstr = '';
-        if (msgadded < 10){
+        if (msgadded < 10) {
             msgstr = '0' + msgadded;
         } else {
             msgstr = msgadded;

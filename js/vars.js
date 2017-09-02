@@ -26,7 +26,7 @@ SOFTWARE.
 
 // Theme version and date
 var themedate = '(02/09/2017)';
-var themeversion = 1.7;
+var themeversion = 1.9;
 
 // Global variables
 var blur;
