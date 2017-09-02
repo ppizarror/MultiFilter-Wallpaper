@@ -80,6 +80,7 @@
             },
             "minutes": {
                 "condition": "customimage.value == '' && customrandomdirectory.value != ''",
+                "editable": true,
                 "max": 180,
                 "min": 0,
                 "order": 8,
@@ -99,6 +100,15 @@
                 "text": "Show console",
                 "type": "bool",
                 "value": true
+            },
+            "consolealpha": {
+                "condition": "showconsole.value && advancedoptions.value",
+                "max": 100,
+                "min": 0,
+                "order": 11,
+                "text": "Console alpha (%)",
+                "type": "slider",
+                "value": 50
             }
         }
     },

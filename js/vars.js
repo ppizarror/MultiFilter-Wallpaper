@@ -30,15 +30,17 @@ var themeversion = 1.6;
 
 // Global variables
 var blur;
+var consolealpha;
 var defaultcolorcss = '';
 var defaultconsolebgcolor = '';
 var defaultconsolefontcolor = '';
 var files = {};
 var hideauthorbool;
 var israndom;
-var maxrandomiterations = 100;
+var maxrandomiterations = 500;
+var maxwordlengthdirs = 35;
 var randomimgbool = false;
-var randomlimitsup = 0.10;
+var randomlimitsup = 0.05;
 var randomtime;
 var selectedfolder;
 var selectedimg;

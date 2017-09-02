@@ -61,9 +61,9 @@ function setWallpaper(file, showmsg) {
             $('#background-img').css('transform', 'scale(1.1)');
             if (showmsg) {
                 if (blur > 0) {
-                    consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(cutword(file, 40), blur));
+                    consolemsg('Wallpaper set: "<i>{0}</i>" | Blur {1}px.'.format(cutword(file, maxwordlengthdirs), blur));
                 } else {
-                    consolemsg('Wallpaper set: {0} | Blur disabled.'.format(cutword(file, 40)));
+                    consolemsg('Wallpaper set: "<i>{0}</i>" | Blur disabled.'.format(cutword(file, maxwordlengthdirs)));
                 }
             }
         } else {
@@ -132,7 +132,7 @@ function roundNumber(num, scale) {
 
 function cutword(word, nchars) {
     // Function that cut word into nchars if length is greater
-    if (word.length < nchars) {
+    if (word.length <= nchars) {
         return word;
     } else {
         return '...' + word.substring(word.length - nchars, word.length);

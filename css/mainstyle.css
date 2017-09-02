@@ -54,14 +54,14 @@ body {
     /*left: 0;
     bottom: 0;*/
     right: 0;
-    width: 25%;
-    height: 8%;
+    width: 470px;
+    height: 200px;
     font-size: 12px;
     text-align: left;
-    opacity: 0.5;
+    opacity: 0.0;
     display: none;
     margin-right: 45px;
-    margin-top: -30px;
+    margin-top: -85px;
 }
 
 #consoletext {
@@ -82,7 +82,7 @@ body {
 #author {
     display: inline-block;
     width: 100%;
-    margin-top: 33px;
+    margin-top: 90px;
     text-align: center;
     text-shadow: 0 0 2px #000000, 0 0 2px #000000;
 }

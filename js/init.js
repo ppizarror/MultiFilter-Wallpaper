@@ -77,7 +77,7 @@ window.wallpaperPropertyListener = {
         if (properties.customrandomdirectory) {
             if (properties.customrandomdirectory.value) {
                 try {
-                    consolemsg('Set random directory {0}.'.format(properties.customrandomdirectory.value));
+                    consolemsg('Set random directory "<i>{0}</i>".'.format(cutword(properties.customrandomdirectory.value, maxwordlengthdirs)));
                     israndom = true;
                     selectedfolder = properties.customrandomdirectory.value;
                     selectedimg = '';
@@ -168,6 +168,13 @@ window.wallpaperPropertyListener = {
         if (properties.hideauthor) {
             hideauthorbool = properties.hideauthor.value;
             setAuthorStatus(!hideauthorbool);
+        }
+
+        // Console opacity
+        if (properties.consolealpha) {
+            consolealpha = properties.consolealpha.value / 100;
+            $('#console').css('opacity', consolealpha);
+            consolemsg('Console opacity set to {0}.'.format(consolealpha));
         }
     },
     userDirectoryFilesAddedOrChanged: function(propertyName, changedFiles) {
