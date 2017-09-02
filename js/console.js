@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 // Console messages
-var consolemsglist = ['<b>Blur-Wallpaper v{0}</b>'.format(themeversion)];
+var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0}</b>'.format(themeversion)];
 var maxmsg = 15;
 
 function consolemsg(msg) {
