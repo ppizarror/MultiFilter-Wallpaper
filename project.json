@@ -1,38 +1,38 @@
 {
-	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, advanced options, etc.\n\nVersion 1.9 (02/09/2017).\nAuthor: Pablo Pizarro @ ppizarror.com.",
+	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, advanced options, etc.\n\nVersion 1.9 (02/09/2017).\nAuthor: Pablo Pizarro @ ppizarror.com\nGithub: https://github.com/ppizarror/blur-wallpaper",
 	"file" : "index.html",
-	"general" :
+	"general" : 
 	{
-		"properties" :
+		"properties" : 
 		{
-			"adv-options-title" :
+			"adv-options-title" : 
 			{
 				"condition" : "advancedoptions.value",
 				"order" : 9,
 				"text" : "<br><h5><b>Advanced Options</b></h5>",
 				"type" : "text"
 			},
-			"advancedoptions" :
+			"advancedoptions" : 
 			{
 				"order" : 2,
 				"text" : "ui_settings_advanced",
 				"type" : "bool",
 				"value" : false
 			},
-			"background-image" :
+			"background-image" : 
 			{
 				"order" : 3,
 				"text" : "<h5><b>Background image</b></h5>",
 				"type" : "text"
 			},
-			"background-property" :
+			"background-property" : 
 			{
 				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
 				"order" : 6,
 				"text" : "<br><h5><b>Background properties</b></h5>",
 				"type" : "text"
 			},
-			"backgroundcolor" :
+			"backgroundcolor" : 
 			{
 				"condition" : "customrandomdirectory.value == '' && customimage.value == ''",
 				"order" : 1,
@@ -40,7 +40,7 @@
 				"type" : "color",
 				"value" : "0.2 0.2 0.2"
 			},
-			"blur" :
+			"blur" : 
 			{
 				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
 				"editable" : true,
@@ -51,7 +51,7 @@
 				"type" : "slider",
 				"value" : 5
 			},
-			"consolealpha" :
+			"consolealpha" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"max" : 100,
@@ -61,7 +61,7 @@
 				"type" : "slider",
 				"value" : 50
 			},
-			"consolebgcolor" :
+			"consolebgcolor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 13,
@@ -69,7 +69,7 @@
 				"type" : "color",
 				"value" : "0.45 0.45 0.45"
 			},
-			"consolefontcolor" :
+			"consolefontcolor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 12,
@@ -77,7 +77,7 @@
 				"type" : "color",
 				"value" : "0 0 0"
 			},
-			"customimage" :
+			"customimage" : 
 			{
 				"condition" : "customrandomdirectory.value == ''",
 				"order" : 4,
@@ -85,7 +85,7 @@
 				"type" : "file",
 				"value" : ""
 			},
-			"customrandomdirectory" :
+			"customrandomdirectory" : 
 			{
 				"condition" : "customimage.value == ''",
 				"mode" : "ondemand",
@@ -94,7 +94,7 @@
 				"type" : "directory",
 				"value" : ""
 			},
-			"hideauthor" :
+			"hideauthor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 14,
@@ -102,7 +102,7 @@
 				"type" : "bool",
 				"value" : false
 			},
-			"minutes" :
+			"minutes" : 
 			{
 				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
 				"editable" : true,
@@ -113,14 +113,14 @@
 				"type" : "slider",
 				"value" : 15
 			},
-			"schemecolor" :
+			"schemecolor" : 
 			{
 				"order" : 0,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
 				"value" : "0 0 0"
 			},
-			"showconsole" :
+			"showconsole" : 
 			{
 				"condition" : "advancedoptions.value",
 				"order" : 10,
