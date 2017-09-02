@@ -44,14 +44,29 @@ function randomImageResponse(propertyName, filePath) {
     selectedimg = filePath;
 }
 
+function dummy2varfun(a, b) {}
+
 function nextRandomImage() {
     // Next Random Image
-    window.wallpaperRequestRandomFileForProperty('customrandomdirectory', randomImageResponse);
+    try {
+        for (i = 0; i < maxrandomiterations; i++) {
+            r = Math.random();
+            if (r < randomlimitsup) {
+                consolemsg('Chosing random image with {0} iterations. r={1}<{2}'.format(i, roundNumber(r, 2), randomlimitsup));
+                window.wallpaperRequestRandomFileForProperty('customrandomdirectory', randomImageResponse);
+                return;
+            }
+            window.wallpaperRequestRandomFileForProperty('customrandomdirectory', dummy2varfun);
+        }
+    } catch (e) {
+        consolemsg(parseException(e));
+    } finally {}
+
 }
 
 function setWallpaperSingleImage() {
     // Set single image
-    setWallpaper(selectedimg);
+    setWallpaper(selectedimg, false);
 }
 
 // Property Listener
@@ -66,58 +81,58 @@ window.wallpaperPropertyListener = {
                     israndom = true;
                     selectedfolder = properties.customrandomdirectory.value;
                     selectedimg = '';
-                    consolemsg(randomtime);
-                    consolemsg('hola');
-                    nextRandomImage();
                     nextRandomImage();
                     if (randomtime > 0 && israndom) {
                         clearRandomFunTimer();
-                        consolemsg('Randomized function set to {0} minutes.'.format(randomtime / 60000));
-                        timedrandomizefun = setTimeout(nextRandomImage, randomtime);
+                        intervalsetminutesmsg('Randomized function', randomtime);
+                        timedrandomizefun = setInterval(nextRandomImage, randomtime);
                     } else {
                         clearRandomFunTimer();
                     }
-                    clearSingleImageFunTimer();
                 } catch (e) {
                     consolemsg(parseException(e));
                 } finally {}
-
+            } else {
+                clearAll();
             }
-        } else
+        }
+
         // Read single selected image
-        {
-            if (properties.customimage) {
-                if (properties.customimage.value) {
-                    setWallpaper(properties.customimage.value);
+        if (properties.customimage) {
+            if (properties.customimage.value) {
+                try {
+                    clearRandomFunTimer();
+                    setWallpaper(properties.customimage.value, true);
                     israndom = false;
                     selectedimg = properties.customimage.value;
                     selectedfolder = '';
-                    properties.customrandomdirectory.value = '';
-                    clearRandomFunTimer();
-                    clearSingleImageFunTimer();
-                    timedsingleimgfun = setTimeout(setWallpaperSingleImage, 60000);
-                }
+                } catch (e) {
+                    consolemsg(parseException(e));
+                } finally {}
+            } else {
+                clearAll();
             }
         }
 
         // Read blur
         if (properties.blur) {
             blur = properties.blur.value;
-            setWallpaper(selectedimg);
+            setWallpaper(selectedimg, true);
         }
 
         // Minute transition
         if (properties.minutes) {
             randomtime = properties.minutes.value * 60000;
             if (randomtime > 0 && israndom) {
-                clearRandomFunTimer();
-                timedrandomizefun = setTimeout(nextRandomImage, randomtime);
-                consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes.value));
-            } else {
                 try {
-                    clearTimeout(timedrandomizefun);
-                    consolemsg('Randomized function stopped.');
-                } catch (e) {} finally {}
+                    clearRandomFunTimer();
+                    timedrandomizefun = setInterval(nextRandomImage, randomtime);
+                    intervalsetminutesmsg('Randomized function', randomtime);
+                } catch (e) {
+                    consolemsg(parseException(e));
+                } finally {}
+            } else {
+                clearRandomFunTimer();
             }
         }
 
@@ -154,7 +169,6 @@ window.wallpaperPropertyListener = {
             hideauthorbool = properties.hideauthor.value;
             setAuthorStatus(!hideauthorbool);
         }
-
     },
     userDirectoryFilesAddedOrChanged: function(propertyName, changedFiles) {
         if (!files.hasOwnProperty(propertyName)) {

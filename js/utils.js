@@ -24,40 +24,84 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+/*
+Timer functions
+*/
 function clearRandomFunTimer() {
     // Delete timer of random wallpaper
     try {
         clearTimeout(timedrandomizefun);
         consolemsg('Randomized function stopped.');
-    } catch (e) {} finally {}
+    } catch (e) {
+        consolemsg(parseException(e));
+    } finally {}
 }
 
-function clearSingleImageFunTimer() {
-    // Delete timer of single image wallpaper
-    try {
-        clearTimeout(timedsingleimgfun);
-        consolemsg('Single image function stopped.');
-    } catch (e) {} finally {}
-}
-
-function setWallpaper(file) {
-    // Set image wallpaper
-    if (file) {
-        $('#background-img').css('background-image', 'url(file:///' + file + ')');
-        $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
-        $('#background-img').css('filter', 'blur(' + blur + 'px)');
-        $('#background-img').css('transform', 'scale(1.1)');
-        consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
+function intervalsetminutesmsg(msg, miliseconds) {
+    // Create console message that display msg with x minutes
+    m = miliseconds / 60000;
+    if (m <= 1) {
+        consolemsg('{0} set to {1} minute.'.format(msg, m));
     } else {
-        $('#background-img').css('background-color', defaultcolorcss);
-        $('#background-img').css('background-image', '');
-        $('#background-img').css('-webkit-filter', '');
-        $('#background-img').css('filter', '');
-        $('#background-img').css('transform', '');
-        clearTimeout(timedrandomizefun);
-        consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
+        consolemsg('{0} set to {1} minutes.'.format(msg, m));
     }
 }
+
+/*
+Wallpaper property functions
+*/
+function setWallpaper(file, showmsg) {
+    // Set image wallpaper
+    showmsg = (typeof showmsg !== 'undefined') ? showmsg : true;
+    try {
+        if (file) {
+            $('#background-img').css('background-image', 'url(file:///' + file + ')');
+            $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
+            $('#background-img').css('filter', 'blur(' + blur + 'px)');
+            $('#background-img').css('transform', 'scale(1.1)');
+            if (showmsg) {
+                if (blur > 0) {
+                    consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
+                } else {
+                    consolemsg('Wallpaper set: {0} | Blur disabled.'.format(file));
+                }
+            }
+        } else {
+            $('#background-img').css('background-color', defaultcolorcss);
+            $('#background-img').css('background-image', '');
+            $('#background-img').css('-webkit-filter', '');
+            $('#background-img').css('filter', '');
+            $('#background-img').css('transform', '');
+            try {
+                if (selectedimg != '') {
+                    setWallpaper(selectedimg, true);
+                } else {
+                    if (showmsg) {
+                        consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
+                    }
+                }
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+    } catch (e) {
+        consolemsg(parseException(e));
+    } finally {}
+
+}
+
+function clearAll() {
+    // Clear all statuses
+    clearRandomFunTimer();
+    selectedfolder = '';
+    selectedimg = '';
+    consolemsg('Clearing wallpaper.');
+    setWallpaper('', true);
+}
+
+/*
+Aux functions
+*/
 
 function createRGBColor(colorstr) {
     // Create color from sting
@@ -66,4 +110,20 @@ function createRGBColor(colorstr) {
         return Math.ceil(c * 255);
     });
     return 'rgb(' + color + ')';
+}
+
+function roundNumber(num, scale) {
+    if (!("" + num).includes("e")) {
+        return +(Math.round(num + "e+" + scale) + "e-" + scale);
+    } else {
+        var arr = ("" + num).split("e");
+        var sig = ""
+        if (+arr[1] + scale > 0) {
+            sig = "+";
+        }
+        var i = +arr[0] + "e" + sig + (+arr[1] + scale);
+        var j = Math.round(i);
+        var k = +(j + "e-" + scale);
+        return k;
+    }
 }

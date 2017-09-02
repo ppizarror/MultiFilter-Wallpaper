@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 // Theme version
-var themeversion = 1.4;
+var themeversion = 1.5;
 
 // Global variables
 var blur;
@@ -35,9 +35,11 @@ var defaultconsolefontcolor;
 var files = {};
 var hideauthorbool;
 var israndom;
+var maxrandomiterations = 100;
+var randomimgbool = false;
+var randomlimitsup = 0.10;
 var randomtime;
 var selectedfolder;
 var selectedimg;
 var showconsole;
 var timedrandomizefun = null;
-var timedsingleimgfun = null;
