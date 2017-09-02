@@ -24,14 +24,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Theme version
+// Theme version and date
+var themedate = '(02/09/2017)';
 var themeversion = 1.6;
 
 // Global variables
 var blur;
-var defaultcolorcss;
-var defaultconsolebgcolor;
-var defaultconsolefontcolor;
+var defaultcolorcss = '';
+var defaultconsolebgcolor = '';
+var defaultconsolefontcolor = '';
 var files = {};
 var hideauthorbool;
 var israndom;

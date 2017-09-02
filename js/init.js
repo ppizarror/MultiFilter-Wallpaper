@@ -148,7 +148,7 @@ window.wallpaperPropertyListener = {
             defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
             consolemsg('Console font color: {0}.'.format(defaultconsolefontcolor));
             $('#consoletext').css('color', defaultconsolefontcolor);
-            $('#author').css('color', defaultconsolefontcolor);
+            $('#author').css('color', 'rgb(255, 255, 255)');
         }
 
         // Console background color

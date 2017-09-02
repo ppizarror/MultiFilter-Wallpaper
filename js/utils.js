@@ -61,22 +61,24 @@ function setWallpaper(file, showmsg) {
             $('#background-img').css('transform', 'scale(1.1)');
             if (showmsg) {
                 if (blur > 0) {
-                    consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
+                    consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(cutword(file, 40), blur));
                 } else {
-                    consolemsg('Wallpaper set: {0} | Blur disabled.'.format(file));
+                    consolemsg('Wallpaper set: {0} | Blur disabled.'.format(cutword(file, 40)));
                 }
             }
         } else {
-            $('#background-img').css('background-color', defaultcolorcss);
-            $('#background-img').css('background-image', '');
-            $('#background-img').css('-webkit-filter', '');
-            $('#background-img').css('filter', '');
-            $('#background-img').css('transform', '');
+            if (defaultcolorcss != '') {
+                $('#background-img').css('background-color', defaultcolorcss);
+                $('#background-img').css('background-image', '');
+                $('#background-img').css('-webkit-filter', '');
+                $('#background-img').css('filter', '');
+                $('#background-img').css('transform', '');
+            }
             try {
                 if (selectedimg != '') {
                     setWallpaper(selectedimg, true);
                 } else {
-                    if (showmsg) {
+                    if (showmsg && defaultcolorcss != '') {
                         consolemsg('Deleted background image and set background-color {0}.'.format(defaultcolorcss));
                     }
                 }
@@ -125,5 +127,14 @@ function roundNumber(num, scale) {
         var j = Math.round(i);
         var k = +(j + "e-" + scale);
         return k;
+    }
+}
+
+function cutword(word, nchars) {
+    // Function that cut word into nchars if length is greater
+    if (word.length < nchars) {
+        return word;
+    } else {
+        return '...' + word.substring(word.length - nchars, word.length);
     }
 }
