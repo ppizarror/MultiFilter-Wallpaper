@@ -1,5 +1,5 @@
 {
-    "description": "Load an image or directory to create a blur wallpaper on your desktop. Fully customizable.\n Author: Pablo Pizarro @ppizarror.com.",
+    "description": "Load an image or directory to create a blur wallpaper on your desktop.\nFully customizable.\nAuthor: Pablo Pizarro @ppizarror.com.",
     "file": "index.html",
     "general": {
         "properties": {
@@ -10,58 +10,75 @@
                 "value": "0 0 0"
             },
             "backgroundcolor": {
+                "condition": "customrandomdirectory.value == '' && customimage.value == ''",
                 "order": 1,
                 "text": "ui_editor_scene_options_background_color",
                 "type": "color",
-                "value": "0.2 0.2 0.2",
-                "condition": "customrandomdirectory.value == '' && customimage.value == ''"
+                "value": "0.2 0.2 0.2"
             },
-            "background-image": {
+            "advancedoptions": {
                 "order": 2,
-                "text": "<h5><b>Background image</b></h5>",
-                "type": "text",
+                "text": "ui_settings_advanced",
+                "type": "bool",
                 "value": false
             },
+            "background-image": {
+                "order": 3,
+                "text": "<h5><b>Background image</b></h5>",
+                "type": "text"
+            },
             "customimage": {
+                "condition": "customrandomdirectory.value == ''",
+                "order": 4,
                 "text": "User image",
                 "type": "file",
-                "order": 3,
-                "value": "",
-                "condition": "customrandomdirectory.value == ''"
+                "value": ""
             },
             "customrandomdirectory": {
+                "condition": "customimage.value == ''",
+                "mode": "ondemand",
+                "order": 5,
                 "text": "Random directory",
                 "type": "directory",
-                "mode": "ondemand",
-                "order": 4,
-                "value": "",
-                "condition": "customimage.value == ''"
+                "value": ""
             },
             "background-property": {
-                "order": 5,
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6,
                 "text": "<br><h5><b>Background properties</b></h5>",
-                "type": "text",
-                "value": false,
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''"
+                "type": "text"
             },
             "blur": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "max": 20,
+                "min": 0,
+                "order": 7,
                 "text": "Blur (px)",
                 "type": "slider",
-                "value": 3,
-                "min": 0,
-                "max": 20,
-                "order": 6,
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''"
+                "value": 3
             },
             "minutes": {
+                "condition": "customimage.value == '' && customrandomdirectory.value != ''",
+                "max": 180,
+                "min": 0,
+                "order": 8,
                 "text": "Time transition (min)",
                 "type": "slider",
-                "value": 15,
-                "min": 0,
-                "max": 180,
-                "order": 7,
-                "condition": "customimage.value == '' && customrandomdirectory.value != ''"
-            }
+                "value": 15
+            },
+            "adv-options-title": {
+                "condition": "advancedoptions.value",
+                "order": 9,
+                "text": "<br><h5><b>Advanced Options</b></h5>",
+                "type": "text"
+            },
+            "showconsole": {
+                "condition": "advancedoptions.value",
+                "order": 10,
+                "text": "Show console",
+                "type": "bool",
+                "value": false
+            },
         }
     },
     "title": "Blur-Wallpaper",
