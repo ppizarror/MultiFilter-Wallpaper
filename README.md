@@ -1,4 +1,4 @@
-#Blur-Wallpaper
+# Blur-Wallpaper
 [![@ppizarror](http://ppizarror.com/resources/images/author.svg)](http://ppizarror.com)
 [![Licencia GPL](http://ppizarror.com/resources/images/licensemit.svg)](https://opensource.org/licenses/MIT/)
 
