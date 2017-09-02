@@ -82,5 +82,5 @@ function parseException(e) {
 
 function setRgbLineMsg(c) {
     // Create span with same color as message
-    return '<span style="color: {0}"><b>{0}</b></span>'.format(c);
+    return '<span style="color: {0}; text-shadow: 0 0 1px #000000, 0 0 1px #000000;"><b>{0}</b></span>'.format(c);
 }

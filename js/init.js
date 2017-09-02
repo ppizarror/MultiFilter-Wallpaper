@@ -116,8 +116,12 @@ window.wallpaperPropertyListener = {
 
         // Read blur
         if (properties.blur) {
-            blur = properties.blur.value;
-            setWallpaper(selectedimg, true);
+            try {
+                blur = properties.blur.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Minute transition
@@ -138,43 +142,67 @@ window.wallpaperPropertyListener = {
 
         // Background color if no image
         if (properties.backgroundcolor) {
-            defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
-            consolemsg('Default background color: {0}.'.format(setRgbLineMsg(defaultcolorcss)));
-            setWallpaper();
+            try {
+                defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
+                consolemsg('Default background color: {0}.'.format(setRgbLineMsg(defaultcolorcss)));
+                setWallpaper();
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Console font color
         if (properties.consolefontcolor) {
-            defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
-            consolemsg('Console font color: {0}.'.format(setRgbLineMsg(defaultconsolefontcolor)));
-            $('#consoletext').css('color', defaultconsolefontcolor);
-            $('#author').css('color', 'rgb(255, 255, 255)');
+            try {
+                defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
+                consolemsg('Console font color: {0}.'.format(setRgbLineMsg(defaultconsolefontcolor)));
+                $('#consoletext').css('color', defaultconsolefontcolor);
+                $('#author').css('color', 'rgb(255, 255, 255)');
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Console background color
         if (properties.consolebgcolor) {
-            defaultconsolebgcolor = createRGBColor(properties.consolebgcolor.value);
-            consolemsg('Console background color: {0}.'.format(setRgbLineMsg(defaultconsolebgcolor)));
-            $('#consoletext').css('background-color', defaultconsolebgcolor);
+            try {
+                defaultconsolebgcolor = createRGBColor(properties.consolebgcolor.value);
+                consolemsg('Console background color: {0}.'.format(setRgbLineMsg(defaultconsolebgcolor)));
+                $('#consoletext').css('background-color', defaultconsolebgcolor);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Hide/Unhide console
         if (properties.showconsole) {
-            showconsole = properties.showconsole.value;
-            setConsoleStatus(showconsole);
+            try {
+                showconsole = properties.showconsole.value;
+                setConsoleStatus(showconsole);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Hide/Unhide author
         if (properties.hideauthor) {
-            hideauthorbool = properties.hideauthor.value;
-            setAuthorStatus(!hideauthorbool);
+            try {
+                hideauthorbool = properties.hideauthor.value;
+                setAuthorStatus(!hideauthorbool);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Console opacity
         if (properties.consolealpha) {
-            consolealpha = properties.consolealpha.value / 100;
-            $('#console').css('opacity', consolealpha);
-            consolemsg('Console opacity set to {0}.'.format(consolealpha));
+            try {
+                consolealpha = properties.consolealpha.value / 100;
+                $('#console').css('opacity', consolealpha);
+                consolemsg('Console opacity set to {0}.'.format(consolealpha));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
     },
     userDirectoryFilesAddedOrChanged: function(propertyName, changedFiles) {

@@ -1,5 +1,5 @@
 {
-    "description": "Load an image or directory to create a blur wallpaper on your desktop.\nFully customizable.\n\nVersion 1.6\nAuthor: Pablo Pizarro @ppizarror.com.",
+    "description": "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, advanced options, etc.\n\nVersion 1.7\nAuthor: Pablo Pizarro @ppizarror.com.",
     "file": "index.html",
     "general": {
         "properties": {
@@ -35,7 +35,8 @@
             },
             "blur": {
                 "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "max": 20,
+				"editable": true,
+                "max": 10,
                 "min": 0,
                 "order": 7,
                 "text": "Blur (px)",
