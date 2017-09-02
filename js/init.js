@@ -65,7 +65,7 @@ window.wallpaperPropertyListener = {
             randomtime = properties.minutes.value * 60000;
             if (randomtime > 0 && israndom) {
                 timedrandomizefun = setTimeout(nextRandomImage, randomtime);
-                consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes));
+                consolemsg('Randomized function set to {0} minutes.'.format(properties.minutes.value));
             } else {
                 try {
                     clearTimeout(timedrandomizefun);
