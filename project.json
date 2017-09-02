@@ -1,108 +1,128 @@
 {
-    "description": "Load an image or directory to create a blur wallpaper on your desktop.\nFully customizable.\nAuthor: Pablo Pizarro @ppizarror.com.",
-    "file": "index.html",
-    "general": {
-        "properties": {
-            "schemecolor": {
-                "order": 0,
-                "text": "ui_browse_properties_scheme_color",
-                "type": "color",
-                "value": "0 0 0"
-            },
-            "backgroundcolor": {
-                "condition": "customrandomdirectory.value == '' && customimage.value == ''",
-                "order": 1,
-                "text": "ui_editor_scene_options_background_color",
-                "type": "color",
-                "value": "0.2 0.2 0.2"
-            },
-            "advancedoptions": {
-                "order": 2,
-                "text": "ui_settings_advanced",
-                "type": "bool",
-                "value": false
-            },
-            "background-image": {
-                "order": 3,
-                "text": "<h5><b>Background image</b></h5>",
-                "type": "text"
-            },
-            "customimage": {
-                "condition": "customrandomdirectory.value == ''",
-                "order": 4,
-                "text": "User image",
-                "type": "file",
-                "value": ""
-            },
-            "customrandomdirectory": {
-                "condition": "customimage.value == ''",
-                "mode": "ondemand",
-                "order": 5,
-                "text": "Random directory",
-                "type": "directory",
-                "value": ""
-            },
-            "background-property": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6,
-                "text": "<br><h5><b>Background properties</b></h5>",
-                "type": "text"
-            },
-            "blur": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "max": 20,
-                "min": 0,
-                "order": 7,
-                "text": "Blur (px)",
-                "type": "slider",
-                "value": 3
-            },
-            "minutes": {
-                "condition": "customimage.value == '' && customrandomdirectory.value != ''",
-                "max": 180,
-                "min": 0,
-                "order": 8,
-                "text": "Time transition (min)",
-                "type": "slider",
-                "value": 15
-            },
-            "adv-options-title": {
-                "condition": "advancedoptions.value",
-                "order": 9,
-                "text": "<br><h5><b>Advanced Options</b></h5>",
-                "type": "text"
-            },
-            "showconsole": {
-                "condition": "advancedoptions.value",
-                "order": 10,
-                "text": "Show console",
-                "type": "bool",
-                "value": false
-            },
-            "consolefontcolor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 12,
-                "text": "Console font color",
-                "type": "color",
-                "value": "0 0 0"
-            },
-            "consolebgcolor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 13,
-                "text": "Console background color",
-                "type": "color",
-                "value": "0.45 0.45 0.45"
-            },
-            "hideauthor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 14,
-                "text": "Hide author",
-                "type": "bool",
-                "value": false
-            },
-        }
-    },
-    "title": "Blur-Wallpaper",
-    "type": "web",
-    "monetization": false
+	"description" : "Load an image or directory to create a blur wallpaper on your desktop.\nFully customizable.\nAuthor: Pablo Pizarro @ppizarror.com.",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"adv-options-title" : 
+			{
+				"condition" : "advancedoptions.value",
+				"order" : 9,
+				"text" : "<br><h5><b>Advanced Options</b></h5>",
+				"type" : "text"
+			},
+			"advancedoptions" : 
+			{
+				"order" : 2,
+				"text" : "ui_settings_advanced",
+				"type" : "bool",
+				"value" : false
+			},
+			"background-image" : 
+			{
+				"order" : 3,
+				"text" : "<h5><b>Background image</b></h5>",
+				"type" : "text"
+			},
+			"background-property" : 
+			{
+				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
+				"order" : 6,
+				"text" : "<br><h5><b>Background properties</b></h5>",
+				"type" : "text"
+			},
+			"backgroundcolor" : 
+			{
+				"condition" : "customrandomdirectory.value == '' && customimage.value == ''",
+				"order" : 1,
+				"text" : "ui_editor_scene_options_background_color",
+				"type" : "color",
+				"value" : "0.2 0.2 0.2"
+			},
+			"blur" : 
+			{
+				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
+				"max" : 20,
+				"min" : 0,
+				"order" : 7,
+				"text" : "Blur (px)",
+				"type" : "slider",
+				"value" : 3
+			},
+			"consolebgcolor" : 
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 13,
+				"text" : "Console background color",
+				"type" : "color",
+				"value" : "0.45 0.45 0.45"
+			},
+			"consolefontcolor" : 
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 12,
+				"text" : "Console font color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"customimage" : 
+			{
+				"condition" : "customrandomdirectory.value == ''",
+				"order" : 4,
+				"text" : "User image",
+				"type" : "file",
+				"value" : ""
+			},
+			"customrandomdirectory" : 
+			{
+				"condition" : "customimage.value == ''",
+				"mode" : "ondemand",
+				"order" : 5,
+				"text" : "Random directory",
+				"type" : "directory",
+				"value" : ""
+			},
+			"hideauthor" : 
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 14,
+				"text" : "Hide author",
+				"type" : "bool",
+				"value" : false
+			},
+			"minutes" : 
+			{
+				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
+				"max" : 180,
+				"min" : 0,
+				"order" : 8,
+				"text" : "Time transition (min)",
+				"type" : "slider",
+				"value" : 15
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"showconsole" : 
+			{
+				"condition" : "advancedoptions.value",
+				"order" : 10,
+				"text" : "Show console",
+				"type" : "bool",
+				"value" : false
+			}
+		}
+	},
+	"monetization" : false,
+	"preview" : "preview.jpg",
+	"tags" : [ "Unspecified" ],
+	"title" : "Blur-Wallpaper",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : 1125984664
 }
