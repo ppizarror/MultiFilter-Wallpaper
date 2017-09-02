@@ -45,11 +45,12 @@ body {
     border-radius: 2px;
     border-width: 1px;
     border-style: solid;
-    margin-left: 0;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     top: 50%;
     padding: 15px;
     width: 100%;
     vertical-align: justify;
-    word-wrap: normal;
+    word-wrap: break-word;
 }

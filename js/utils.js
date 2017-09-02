@@ -21,11 +21,15 @@ function consolemsg(msg) {
 
 function setWallpaper(file) {
     // Set image wallpaper
-    $('#background-img').css('background-image', 'url(file:///' + file + ')');
-    $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
-    $('#background-img').css('filter', 'blur(' + blur + 'px)');
-    $('#background-img').css('transform', 'scale(1.1)');
-    consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
+    if (file) {
+        $('#background-img').css('background-image', 'url(file:///' + file + ')');
+        $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
+        $('#background-img').css('filter', 'blur(' + blur + 'px)');
+        $('#background-img').css('transform', 'scale(1.1)');
+        consolemsg('Wallpaper set: {0} | Blur {1}px.'.format(file, blur));
+    } else {
+        $('#background-img').css('background-color', defaultcolorcss);
+    }
 }
 
 // String format

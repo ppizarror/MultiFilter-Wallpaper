@@ -2,11 +2,12 @@
 var colorThief = new ColorThief();
 
 // Local vars
-var files = {};
 var blur = 0;
+var defaultcolorcss;
+var files = {};
 var israndom;
-var selectedimg;
 var randomtime;
+var selectedimg;
 var timedrandomizefun;
 
 function updateFileList(currentFiles) {}
@@ -71,6 +72,17 @@ window.wallpaperPropertyListener = {
                     consolemsg('Randomized function stopped.');
                 } catch (e) {} finally {}
             }
+        }
+
+        // Background color if no image
+        if (properties.backgroundcolor) {
+            defaultcolorcss = properties.backgroundcolor.value.split(' ');
+            defaultcolorcss = defaultcolorcss.map(function(c) {
+                return Math.ceil(c * 255);
+            });
+            defaultcolorcss = 'rgb(' + defaultcolorcss + ')';
+            consolemsg('Default background color: {0}.'.format(defaultcolorcss));
+            setWallpaper();
         }
 
     },
