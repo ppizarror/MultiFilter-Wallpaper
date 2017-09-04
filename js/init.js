@@ -204,6 +204,26 @@ window.wallpaperPropertyListener = {
                 consolemsg(parseException(e));
             } finally {}
         }
+
+        // Transition style
+        if (properties.transitionstyle) {
+            try {
+                transitioneffect = properties.transitionstyle.value;
+                consolemsg("Set '{0}' transition effect.".format(transitioneffect));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Transition duration
+        if (properties.transitioneffecttime) {
+            try {
+                transitionduration = properties.transitioneffecttime.value;
+                consolemsg('Set transition duration to {0} ms.'.format(transitionduration));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
     },
     userDirectoryFilesAddedOrChanged: function(propertyName, changedFiles) {
         if (!files.hasOwnProperty(propertyName)) {
