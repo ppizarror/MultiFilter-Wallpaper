@@ -81,6 +81,7 @@ window.wallpaperPropertyListener = {
                     israndom = true;
                     selectedfolder = properties.customrandomdirectory.value;
                     selectedimg = '';
+                    lastimg = '';
                     nextRandomImage();
                     if (randomtime > 0 && israndom) {
                         clearRandomFunTimer();
@@ -106,6 +107,7 @@ window.wallpaperPropertyListener = {
                     israndom = false;
                     selectedimg = properties.customimage.value;
                     selectedfolder = '';
+                    lastimg = '';
                 } catch (e) {
                     consolemsg(parseException(e));
                 } finally {}

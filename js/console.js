@@ -26,6 +26,7 @@ SOFTWARE.
 
 // Console messages
 var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
+var consolemsglistinfo = [''];
 var maxmsg = 13;
 var msgadded = 1;
 
@@ -39,19 +40,21 @@ function consolemsg(msg) {
         } else {
             msgstr = msgadded;
         }
-        new_message = '{2} <b>[<i>{0}</i>]</b> {1}'.format(new Date().format('m/d H:i:s'), msg, msgstr);
-        if (new_message != consolemsglist[consolemsglist.length - 1]) {
-            consolemsglist.push(new_message);
+        msg_info = '{0} <b>[<i>{1}</i>]</b> '.format(msgstr, new Date().format('m/d H:i:s'));
+        if (msg != consolemsglist[consolemsglist.length - 1]) {
+            consolemsglist.push(msg);
+            consolemsglistinfo.push(msg_info);
             msgadded += 1;
         }
         if (consolemsglist.length > maxmsg) {
             consolemsglist.splice(1, 1);
+            consolemsglistinfo.splice(1, 1)
         }
 
         // Concatenate all messages and write to console
         msgc = '';
         for (i = 0; i < consolemsglist.length; i++) {
-            msgc += consolemsglist[i] + '<br>';
+            msgc += consolemsglistinfo[i] + consolemsglist[i] + '<br>';
         }
         $('#console #consoletext').html(msgc);
     } catch (e) {} finally {}

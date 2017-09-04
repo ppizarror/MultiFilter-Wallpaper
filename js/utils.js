@@ -59,9 +59,9 @@ function setWallpaper(file, showmsg) {
             $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
             $('#background-img').css('filter', 'blur(' + blur + 'px)');
             $('#background-img').css('transform', 'scale(1.1)');
-            $('#background-aux').css('display', 'block');
-            $('#background-aux').css('opacity', '1.0');
-            if (lastimg != '') {
+            if (lastimg != '' && israndom) {
+                $('#background-aux').css('display', 'block');
+                $('#background-aux').css('opacity', '1.0');
                 // Enable background aux image
                 switch (transitioneffect) {
                     case 'fade':
@@ -90,15 +90,25 @@ function setWallpaper(file, showmsg) {
             $('#background-aux').css('-webkit-filter', 'blur(' + blur + 'px)');
             $('#background-aux').css('filter', 'blur(' + blur + 'px)');
             $('#background-aux').css('transform', 'scale(1.1)');
-            lastimg = file;
+            if (israndom) {
+                lastimg = file;
+            }
             if (showmsg) {
-                setTimeout(function() {
+                if (israndom) {
+                    setTimeout(function() {
+                        if (blur > 0) {
+                            consolemsg('Wallpaper set: "<i>{0}</i>" | Blur {1}px.'.format(cutword(file, maxwordlengthdirs), blur));
+                        } else {
+                            consolemsg('Wallpaper set: "<i>{0}</i>" | Blur disabled.'.format(cutword(file, maxwordlengthdirs)));
+                        }
+                    }, imagewaittime);
+                } else {
                     if (blur > 0) {
                         consolemsg('Wallpaper set: "<i>{0}</i>" | Blur {1}px.'.format(cutword(file, maxwordlengthdirs), blur));
                     } else {
                         consolemsg('Wallpaper set: "<i>{0}</i>" | Blur disabled.'.format(cutword(file, maxwordlengthdirs)));
                     }
-                }, imagewaittime);
+                }
             }
         } else {
             if (defaultcolorcss != '') {
@@ -107,6 +117,13 @@ function setWallpaper(file, showmsg) {
                 $('#background-img').css('-webkit-filter', '');
                 $('#background-img').css('filter', '');
                 $('#background-img').css('transform', '');
+                $('#background-aux').css('background-color', defaultcolorcss);
+                $('#background-aux').css('background-image', '');
+                $('#background-aux').css('-webkit-filter', '');
+                $('#background-aux').css('filter', '');
+                $('#background-aux').css('transform', '');
+                $('#background-aux').css('display', 'nome');
+                $('#background-aux').css('opacity', '1.0');
             }
             try {
                 if (selectedimg != '') {

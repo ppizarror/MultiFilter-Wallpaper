@@ -27,8 +27,8 @@ SOFTWARE.
 /*
 Theme version
 */
-var themedate = '(02/09/2017)';
-var themeversion = 1.9;
+var themedate = '(03/09/2017)';
+var themeversion = '2.0';
 
 /*
 Global variables
