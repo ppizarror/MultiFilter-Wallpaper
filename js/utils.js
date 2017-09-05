@@ -1,6 +1,6 @@
 /*
-BLUR-WALLPAPER.
-Project repo: https://github.com/ppizarror/blur-wallpaper
+MULTIFILTER-WALLPAPER
+Github: https://github.com/ppizarror/MultiFilter-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
@@ -24,32 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/*
-Timer functions
-*/
-function clearRandomFunTimer() {
-    // Delete timer of random wallpaper
-    try {
-        clearTimeout(timedrandomizefun);
-        consolemsg('Randomized function stopped.');
-    } catch (e) {
-        consolemsg(parseException(e));
-    } finally {}
-}
-
-function intervalsetminutesmsg(msg, miliseconds) {
-    // Create console message that display msg with x minutes
-    m = miliseconds / 60000;
-    if (m <= 1) {
-        consolemsg('{0} set to {1} minute.'.format(msg, m));
-    } else {
-        consolemsg('{0} set to {1} minutes.'.format(msg, m));
-    }
-}
-
-/*
-Wallpaper property functions
-*/
 function setWallpaper(file, showmsg) {
     // Set image wallpaper
     showmsg = (typeof showmsg !== 'undefined') ? showmsg : true;
@@ -187,9 +161,25 @@ function clearAll() {
     setWallpaper('', true);
 }
 
-/*
-Aux functions
-*/
+function clearRandomFunTimer() {
+    // Delete timer of random wallpaper
+    try {
+        clearTimeout(timedrandomizefun);
+        consolemsg('Randomized function stopped.');
+    } catch (e) {
+        consolemsg(parseException(e));
+    } finally {}
+}
+
+function intervalsetminutesmsg(msg, miliseconds) {
+    // Create console message that display msg with x minutes
+    m = miliseconds / 60000;
+    if (m <= 1) {
+        consolemsg('{0} set to {1} minute.'.format(msg, m));
+    } else {
+        consolemsg('{0} set to {1} minutes.'.format(msg, m));
+    }
+}
 
 function createRGBColor(colorstr) {
     // Create color from sting
@@ -201,6 +191,7 @@ function createRGBColor(colorstr) {
 }
 
 function roundNumber(num, scale) {
+    // Round a number by <scale> decimals
     if (!("" + num).includes("e")) {
         return +(Math.round(num + "e+" + scale) + "e-" + scale);
     } else {
@@ -217,7 +208,7 @@ function roundNumber(num, scale) {
 }
 
 function cutword(word, nchars) {
-    // Function that cut word into nchars if length is greater
+    // Function that cut word into nchars if length is greater than <nchars>
     if (word.length <= nchars) {
         return word;
     } else {

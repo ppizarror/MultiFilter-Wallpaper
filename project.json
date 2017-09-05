@@ -1,45 +1,45 @@
 {
-	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image.\n\nVersion 3.0 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/MultiFilter-wallpaper",
+	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image.\n\nVersion 3.1 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/MultiFilter-wallpaper",
 	"file" : "index.html",
-	"general" :
+	"general" : 
 	{
-		"properties" :
+		"properties" : 
 		{
-			"adv-options-title" :
+			"adv-options-title" : 
 			{
 				"condition" : "advancedoptions.value",
 				"order" : 10,
 				"text" : "<br><h4><b>Advanced Options</b></h4>",
 				"type" : "text"
 			},
-			"advancedoptions" :
+			"advancedoptions" : 
 			{
 				"order" : 2,
 				"text" : "ui_settings_advanced",
 				"type" : "bool",
 				"value" : false
 			},
-			"background-image" :
+			"background-image" : 
 			{
 				"order" : 3,
 				"text" : "<h4><b>Background image</b></h4>",
 				"type" : "text"
 			},
-			"background-property" :
+			"background-property" : 
 			{
 				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
 				"order" : 6,
 				"text" : "<br><h4><b>Background properties</b></h4>",
 				"type" : "text"
 			},
-			"backgroundcolor" :
+			"backgroundcolor" : 
 			{
 				"order" : 1,
 				"text" : "ui_editor_scene_options_background_color",
 				"type" : "color",
 				"value" : "0 0 0"
 			},
-			"blur" :
+			"blur" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable" : true,
@@ -50,7 +50,7 @@
 				"type" : "slider",
 				"value" : 5
 			},
-			"brightness" :
+			"brightness" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable" : true,
@@ -61,7 +61,7 @@
 				"type" : "slider",
 				"value" : 100
 			},
-			"consolealpha" :
+			"consolealpha" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"max" : 100,
@@ -71,7 +71,7 @@
 				"type" : "slider",
 				"value" : 75
 			},
-			"consolebgcolor" :
+			"consolebgcolor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 14,
@@ -79,7 +79,7 @@
 				"type" : "color",
 				"value" : "0.45 0.45 0.45"
 			},
-			"consolefontcolor" :
+			"consolefontcolor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 13,
@@ -87,7 +87,7 @@
 				"type" : "color",
 				"value" : "0 0 0"
 			},
-			"contrast" :
+			"contrast" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable" : true,
@@ -98,7 +98,7 @@
 				"type" : "slider",
 				"value" : 100
 			},
-			"customimage" :
+			"customimage" : 
 			{
 				"condition" : "customrandomdirectory.value == ''",
 				"order" : 4,
@@ -106,7 +106,7 @@
 				"type" : "file",
 				"value" : ""
 			},
-			"customrandomdirectory" :
+			"customrandomdirectory" : 
 			{
 				"condition" : "customimage.value == ''",
 				"mode" : "ondemand",
@@ -115,7 +115,7 @@
 				"type" : "directory",
 				"value" : ""
 			},
-			"grayscale" :
+			"grayscale" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"max" : 100,
@@ -125,7 +125,7 @@
 				"type" : "slider",
 				"value" : 0
 			},
-			"hideauthor" :
+			"hideauthor" : 
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 15,
@@ -133,7 +133,7 @@
 				"type" : "bool",
 				"value" : true
 			},
-			"huerotate" :
+			"huerotate" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"max" : 360,
@@ -143,7 +143,7 @@
 				"type" : "slider",
 				"value" : 0
 			},
-			"invert" :
+			"invert" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"max" : 100,
@@ -153,7 +153,7 @@
 				"type" : "slider",
 				"value" : 0
 			},
-			"minutes" :
+			"minutes" : 
 			{
 				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
 				"editable" : true,
@@ -164,7 +164,7 @@
 				"type" : "slider",
 				"value" : 15
 			},
-			"opacity" :
+			"opacity" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"max" : 100,
@@ -174,7 +174,7 @@
 				"type" : "slider",
 				"value" : 100
 			},
-			"saturation" :
+			"saturation" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable" : true,
@@ -185,7 +185,7 @@
 				"type" : "slider",
 				"value" : 100
 			},
-			"scale" :
+			"scale" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable" : true,
@@ -196,14 +196,14 @@
 				"type" : "slider",
 				"value" : 100
 			},
-			"schemecolor" :
+			"schemecolor" : 
 			{
 				"order" : 0,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
 				"value" : "0 0 0"
 			},
-			"sepia" :
+			"sepia" : 
 			{
 				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
 				"max" : 100,
@@ -213,7 +213,7 @@
 				"type" : "slider",
 				"value" : 0
 			},
-			"showconsole" :
+			"showconsole" : 
 			{
 				"condition" : "advancedoptions.value",
 				"order" : 11,
@@ -221,7 +221,7 @@
 				"type" : "bool",
 				"value" : false
 			},
-			"transitioneffecttime" :
+			"transitioneffecttime" : 
 			{
 				"condition" : "customimage.value == '' && customrandomdirectory.value != '' && advancedoptions.value",
 				"editable" : true,
@@ -232,10 +232,10 @@
 				"type" : "slider",
 				"value" : 400
 			},
-			"transitionstyle" :
+			"transitionstyle" : 
 			{
 				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
-				"options" :
+				"options" : 
 				[
 					{
 						"label" : "Fade",

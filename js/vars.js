@@ -1,6 +1,6 @@
 /*
-BLUR-WALLPAPER.
-Project repo: https://github.com/ppizarror/blur-wallpaper
+MULTIFILTER-WALLPAPER
+Github: https://github.com/ppizarror/MultiFilter-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
@@ -28,7 +28,7 @@ SOFTWARE.
 Theme version
 */
 var themedate = '(05/09/2017)';
-var themeversion = '3.0';
+var themeversion = '3.1';
 
 /*
 Effects
@@ -74,7 +74,7 @@ var effects = {
     "sepia": {
         "value": 0,
         "enabled": true
-    },
+    }
 }
 
 /*

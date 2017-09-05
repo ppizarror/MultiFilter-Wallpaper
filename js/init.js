@@ -1,6 +1,6 @@
 /*
-BLUR-WALLPAPER.
-Project repo: https://github.com/ppizarror/blur-wallpaper
+MULTIFILTER-WALLPAPER
+Github: https://github.com/ppizarror/MultiFilter-wallpaper
 
 MIT License
 Copyright (c) 2017 Pablo Pizarro @ppizarror.com
