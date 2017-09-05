@@ -6,7 +6,7 @@
             "adv-options-title": {
                 "condition": "advancedoptions.value",
                 "order": 10,
-                "text": "<br><h5><b>Advanced Options</b></h5>",
+                "text": "<br><h4><b>Advanced Options</b></h4>",
                 "type": "text"
             },
             "advancedoptions": {
@@ -17,13 +17,13 @@
             },
             "background-image": {
                 "order": 3,
-                "text": "<h5><b>Background image</b></h5>",
+                "text": "<h4><b>Background image</b></h4>",
                 "type": "text"
             },
             "background-property": {
                 "condition": "customimage.value != '' || customrandomdirectory.value != ''",
                 "order": 6,
-                "text": "<br><h5><b>Background properties</b></h5>",
+                "text": "<br><h4><b>Background properties</b></h4>",
                 "type": "text"
             },
             "backgroundcolor": {
@@ -50,6 +50,63 @@
                 "text": "Grayscale (%)",
                 "type": "slider",
                 "value": 50
+            },
+			"effectgrayscale": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6.2,
+                "text": "Add grayscale",
+                "type": "bool",
+                "value": false
+            },
+			"brightness": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectbrightness.value",
+				"editable": true,
+                "max": 300,
+                "min": 0,
+                "order": 6.31,
+                "text": "Brightness (%)",
+                "type": "slider",
+                "value": 100
+            },
+			"effectbrightness": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6.3,
+                "text": "Add brightness",
+                "type": "bool",
+                "value": false
+            },
+			"contrast": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectcontrast.value",
+				"editable": true,
+                "max": 300,
+                "min": 0,
+                "order": 6.41,
+                "text": "Contrast (%)",
+                "type": "slider",
+                "value": 100
+            },
+			"effectcontrast": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6.4,
+                "text": "Add contrast",
+                "type": "bool",
+                "value": false
+            },
+			"huerotate": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effecthuerotate.value",
+                "max": 360,
+                "min": 0,
+                "order": 6.51,
+                "text": "Hue rotation angle",
+                "type": "slider",
+                "value": 0
+            },
+			"effecthuerotate": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6.5,
+                "text": "Hue rotation",
+                "type": "bool",
+                "value": false
             },
             "consolealpha": {
                 "condition": "showconsole.value && advancedoptions.value",
@@ -95,13 +152,6 @@
                 "text": "Add blur",
                 "type": "bool",
                 "value": true
-            },
-			"effectgrayscale": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.2,
-                "text": "Add grayscale",
-                "type": "bool",
-                "value": false
             },
             "hideauthor": {
                 "condition": "showconsole.value && advancedoptions.value",

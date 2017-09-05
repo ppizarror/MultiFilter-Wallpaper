@@ -91,20 +91,12 @@ function setWallpaper(file, showmsg) {
                 lastimg = file;
             }
             if (showmsg) {
-                function wallpaperConsoleStatus() {
-                    b1 = 'Wallpaper set: <i>{0}</i>'.format(cutword(file, maxwordlengthdirs));
-                    b2 = "";
-                    if (effects.blur.enabled && effects.blur.value > 0) {
-                        b2 += 'Blur {1}px'.format(effects.blur.value);
-                    } else {
-                        b2 += 'Blur disabled';
-                    }
-                    consolemsg('{0} | {1}.'.format(b1, b2));
-                }
                 if (israndom) {
-                    setTimeout(wallpaperConsoleStatus, imagewaittime);
+                    setTimeout(function() {
+                        wallpaperConsoleStatus(file);
+                    }, imagewaittime);
                 } else {
-                    wallpaperConsoleStatus();
+                    wallpaperConsoleStatus(file);
                 }
             }
         } else {
@@ -143,10 +135,16 @@ function applyCssEffects(div_id) {
 
     // Add effects to filterline
     if (effects.blur.enabled) {
-        filterline+='blur(' + effects.blur.value + 'px) ';
+        filterline += 'blur(' + effects.blur.value + 'px) ';
     }
     if (effects.grayscale.enabled) {
-        filterline+='grayscale(' + effects.grayscale.value + '%) ';
+        filterline += 'grayscale(' + effects.grayscale.value + '%) ';
+    }
+    if (effects.brightness.enabled) {
+        filterline += 'brightness(' + effects.brightness.value + '%) ';
+    }
+    if (effects.contrast.enabled) {
+        filterline += 'contrast(' + effects.contrast.value + '%) ';
     }
 
     // Set filterline

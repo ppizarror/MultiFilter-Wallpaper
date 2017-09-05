@@ -156,6 +156,46 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
+        // Brightness effect
+        if (properties.effectbrightness){
+            try {
+                effects.brightness.enabled = properties.effectbrightness.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Brightness value
+        if (properties.brightness){
+            try {
+                effects.brightness.value = properties.brightness.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Contrast effect
+        if (properties.effectcontrast){
+            try {
+                effects.contrast.enabled = properties.effectcontrast.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Contrast value
+        if (properties.contrast){
+            try {
+                effects.contrast.value = properties.contrast.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Minute transition
         if (properties.minutes) {
             randomtime = properties.minutes.value * 60000;
@@ -186,9 +226,9 @@ window.wallpaperPropertyListener = {
         // Console font color
         if (properties.consolefontcolor) {
             try {
-                defaultconsolefontcolor = createRGBColor(properties.consolefontcolor.value);
-                consolemsg('Console font color: {0}.'.format(setRgbLineMsg(defaultconsolefontcolor)));
-                $('#consoletext').css('color', defaultconsolefontcolor);
+                consolecfg.fontcolor = createRGBColor(properties.consolefontcolor.value);
+                consolemsg('Console font color: {0}.'.format(setRgbLineMsg(consolecfg.fontcolor)));
+                $('#consoletext').css('color', consolecfg.fontcolor);
                 $('#author').css('color', 'rgb(255, 255, 255)');
             } catch (e) {
                 consolemsg(parseException(e));
@@ -198,9 +238,9 @@ window.wallpaperPropertyListener = {
         // Console background color
         if (properties.consolebgcolor) {
             try {
-                defaultconsolebgcolor = createRGBColor(properties.consolebgcolor.value);
-                consolemsg('Console background color: {0}.'.format(setRgbLineMsg(defaultconsolebgcolor)));
-                $('#consoletext').css('background-color', defaultconsolebgcolor);
+                consolecfg.bgcolor = createRGBColor(properties.consolebgcolor.value);
+                consolemsg('Console background color: {0}.'.format(setRgbLineMsg(consolecfg.bgcolor)));
+                $('#consoletext').css('background-color', consolecfg.bgcolor);
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -209,8 +249,8 @@ window.wallpaperPropertyListener = {
         // Hide/Unhide console
         if (properties.showconsole) {
             try {
-                showconsole = properties.showconsole.value;
-                setConsoleStatus(showconsole);
+                consolecfg.show = properties.showconsole.value;
+                setConsoleStatus(consolecfg.show);
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -219,8 +259,8 @@ window.wallpaperPropertyListener = {
         // Hide/Unhide author
         if (properties.hideauthor) {
             try {
-                hideauthorbool = properties.hideauthor.value;
-                setAuthorStatus(!hideauthorbool);
+                consolecfg.hideauthor = properties.hideauthor.value;
+                setAuthorStatus(!consolecfg.hideauthor);
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -229,9 +269,9 @@ window.wallpaperPropertyListener = {
         // Console opacity
         if (properties.consolealpha) {
             try {
-                consolealpha = properties.consolealpha.value / 100;
-                $('#console').css('opacity', consolealpha);
-                consolemsg('Console opacity set to {0}.'.format(consolealpha));
+                consolecfg.alpha = properties.consolealpha.value / 100;
+                $('#console').css('opacity', consolecfg.alpha);
+                consolemsg('Console opacity set to {0}.'.format(consolecfg.alpha));
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -241,9 +281,9 @@ window.wallpaperPropertyListener = {
         // Console scale
         if (properties.consolescale) {
             try {
-                consolescale = properties.consolescale.value / 100;
-                consoleScaleTo(consolescale);
-                consolemsg('Console scale set to {0}.'.format(consolescale));
+                consolecfg.scale = properties.consolescale.value / 100;
+                consoleScale();
+                consolemsg('Console scale set to {0}.'.format(consolecfg.scale));
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}

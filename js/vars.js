@@ -38,31 +38,37 @@ var effects = {
         "value": 0,
         "enabled": false
     },
+    "brightness": {
+        "value": 0,
+        "enabled": false
+    },
+    "contrast": {
+        "value": 0,
+        "enabled": false
+    },
     "grayscale": {
+        "value": 0,
+        "enabled": false
+    },
+    "huerotate": {
         "value": 0,
         "enabled": false
     }
 }
+
 /*
 Global variables
 */
-var consolealpha; // Console opacity
-var consolescale; // Console scale
 var defaultcolorcss = ''; // Default background color
-var defaultconsolebgcolor = ''; // Console background color
-var defaultconsolefontcolor = ''; // Console font color
 var files = {}; // Files list
-var hideauthorbool; // Set if author under console is hidden
 var imagewaittime = 3000; // Time to load background images in miliseconds
 var israndom; // Checks if user selected random folder or single image
 var lastimg = ''; // Last used image
 var maxrandomiterations = 500; // Maximum iterations to randomize wallpaper
-var maxwordlengthdirs = 30; // Maximun src length of file shown on console
 var randomlimitsup = 0.05; // Random limit number
 var randomtime; // Random function timer in miliseconds
 var selectedfolder; // User random folder selection
 var selectedimg; // Actual image on background
-var showconsole; // Show console
 var timedrandomizefun = null; // Random timed function
 var transitionduration = 400; // Duration of transition effect
 var transitioneffect = 'none'; // Background transition effect

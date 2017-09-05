@@ -27,15 +27,20 @@ SOFTWARE.
 // Console messages
 var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
 var consolemsglistinfo = [''];
-var maxmsg = 13;
-var msgadded = 1;
+var maxmsg = 13; // Maximum number of active messages
+var maxwordlengthdirs = 30; // Maximun src length of file shown on console
+var msgadded = 1; // Total messages added
 
 // Console configuration
 var consolecfg = {
-    "height": 200,
-    "width": 500,
     "alpha": 1.0,
-    "show": false
+    "bgcolor": "",
+    "fontcolor": "",
+    "height": 200,
+    "hideauthor": true,
+    "scale": 1.0,
+    "show": false,
+    "width": 500
 }
 
 function consolemsg(msg) {
@@ -88,7 +93,7 @@ function setAuthorStatus(status) {
 
 function parseException(e) {
     // Set exception message
-    return "<span class='msgexception'>EXCEPTION!</span> {0}".format(e);
+    return "<span class='msgexception'>EXCEPTION!</span> {0} {1}".format(e.message, e.stack);
 }
 
 function setRgbLineMsg(c) {
@@ -96,12 +101,49 @@ function setRgbLineMsg(c) {
     return '<span style="color: {0}; text-shadow: 0 0 1px #000000, 0 0 1px #000000;"><b>{0}</b></span>'.format(c);
 }
 
-function consoleScaleTo(sc) {
+function consoleScale() {
     // Change scale of console
+    sc = consolecfg.scale;
     newh = consolecfg.height * sc;
     neww = consolecfg.width * sc;
-    newhcorr = -86 - (newh - consoleheight);
+    newhcorr = -86 - (newh - consolecfg.height);
     $('#console').css('width', '{0}px'.format(neww));
     $('#console').css('height', '{0}px'.format(newh));
     $('#console').css('margin-top', '{0}px'.format(newhcorr));
+}
+
+function wallpaperConsoleStatus(file) {
+    // Write wallpaper status
+    b1 = 'Wallpaper set: <i>{0}</i>'.format(cutword(file, maxwordlengthdirs));
+    b2 = "";
+    if (effects.blur.enabled && effects.blur.value > 0) {
+        b2 += 'Blur {0}px'.format(effects.blur.value);
+    } else {
+        b2 += 'Blur disabled';
+    }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.grayscale.enabled && effects.grayscale.value > 0) {
+        b2 += 'Grayscale {0}%'.format(effects.grayscale.value);
+    } else {
+        b2 += 'Grayscale disabled';
+    }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.brightness.enabled && effects.brightness.value > 0) {
+        b2 += 'Brightness {0}%'.format(effects.brightness.value);
+    } else {
+        b2 += 'Brightness disabled';
+    }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.contrast.enabled && effects.contrast.value > 0) {
+        b2 += 'Contrast {0}%'.format(effects.contrast.value);
+    } else {
+        b2 += 'Contrast disabled';
+    }
+    consolemsg('{0} | {1}.'.format(b1, b2));
 }
