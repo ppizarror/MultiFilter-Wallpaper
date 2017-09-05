@@ -4,7 +4,7 @@
 [![Steam Workshop](http://ppizarror.com/resources/images/blur-wallpaper/steam.svg)](http://steamcommunity.com/sharedfiles/filedetails/?id=1125984664)
 
 <p align="center">
-  <img src="http://ppizarror.com/resources/images/blur-wallpaper/main.PNG" alt="Blur-Wallpaper" width="80%" />
+  <img src="preview.jpg" alt="Blur-Wallpaper" width="50%" />
 </p>
 
 <a href="http://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image, incluiding:

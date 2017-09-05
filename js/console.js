@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 // Console messages
-var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
+var consolemsglist = ['<b>[CONSOLE] MultiFilter-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
 var consolemsglistinfo = [''];
 var cssfilterseparator = ", " // Separator between filters
 var maxmsg = 13; // Maximum number of active messages

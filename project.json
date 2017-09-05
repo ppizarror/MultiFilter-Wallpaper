@@ -1,233 +1,263 @@
 {
-    "description": "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, transition effects, advanced options, etc.\n\nVersion 3.0 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/blur-wallpaper",
-    "file": "index.html",
-    "general": {
-        "properties": {
-            "adv-options-title": {
-                "condition": "advancedoptions.value",
-                "order": 10,
-                "text": "<br><h4><b>Advanced Options</b></h4>",
-                "type": "text"
-            },
-            "advancedoptions": {
-                "order": 2,
-                "text": "ui_settings_advanced",
-                "type": "bool",
-                "value": false
-            },
-            "background-image": {
-                "order": 3,
-                "text": "<h4><b>Background image</b></h4>",
-                "type": "text"
-            },
-            "background-property": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6,
-                "text": "<br><h4><b>Background properties</b></h4>",
-                "type": "text"
-            },
-            "backgroundcolor": {
-                "order": 1,
-                "text": "ui_editor_scene_options_background_color",
-                "type": "color",
-                "value": "0 0 0"
-            },
-            "blur": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "editable": true,
-                "max": 10,
-                "min": 0,
-                "order": 6.11,
-                "text": "Blur (px)",
-                "type": "slider",
-                "value": 5
-            },
-			"grayscale": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "max": 100,
-                "min": 0,
-                "order": 6.51,
-                "text": "Grayscale (%)",
-                "type": "slider",
-                "value": 0
-            },
-			"brightness": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-				"editable": true,
-                "max": 300,
-                "min": 0,
-                "order": 6.31,
-                "text": "Brightness (%)",
-                "type": "slider",
-                "value": 100
-            },
-			"contrast": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-				"editable": true,
-                "max": 300,
-                "min": 0,
-                "order": 6.41,
-                "text": "Contrast (%)",
-                "type": "slider",
-                "value": 100
-            },
-			"huerotate": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "max": 360,
-                "min": 0,
-                "order": 6.8,
-                "text": "Hue rotation angle",
-                "type": "slider",
-                "value": 0
-            },
-			"sepia": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "max": 100,
-                "min": 0,
-                "order": 6.71,
-                "text": "Sepia (%)",
-                "type": "slider",
-                "value": 0
-            },
-			"invert": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "max": 100,
-                "min": 0,
-                "order": 6.61,
-                "text": "Invert (%)",
-                "type": "slider",
-                "value": 0
-            },
-			"saturation": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-				"editable": true,
-                "max": 300,
-                "min": 0,
-                "order": 6.21,
-                "text": "Saturation (%)",
-                "type": "slider",
-                "value": 100
-            },
-			"opacity": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-                "max": 100,
-                "min": 0,
-                "order": 6.01,
-                "text": "Opacity (%)",
-                "type": "slider",
-                "value": 100
-            },
-			"scale": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
-				"editable": true,
-                "max": 200,
-                "min": 100,
-                "order": 6.02,
-                "text": "Scale (%)",
-                "type": "slider",
-                "value": 100
-            },
-            "consolealpha": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "max": 100,
-                "min": 0,
-                "order": 12,
-                "text": "Console alpha (%)",
-                "type": "slider",
-                "value": 75
-            },
-            "consolebgcolor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 14,
-                "text": "Console background color",
-                "type": "color",
-                "value": "0.45 0.45 0.45"
-            },
-            "consolefontcolor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 13,
-                "text": "Console font color",
-                "type": "color",
-                "value": "0 0 0"
-            },
-            "customimage": {
-                "condition": "customrandomdirectory.value == ''",
-                "order": 4,
-                "text": "Single image",
-                "type": "file",
-                "value": ""
-            },
-            "customrandomdirectory": {
-                "condition": "customimage.value == ''",
-                "mode": "ondemand",
-                "order": 5,
-                "text": "Random directory",
-                "type": "directory",
-                "value": ""
-            },
-            "hideauthor": {
-                "condition": "showconsole.value && advancedoptions.value",
-                "order": 15,
-                "text": "Hide author",
-                "type": "bool",
-                "value": true
-            },
-            "minutes": {
-                "condition": "customimage.value == '' && customrandomdirectory.value != ''",
-                "editable": true,
-                "max": 180,
-                "min": 0,
-                "order": 8,
-                "text": "Change time (min)",
-                "type": "slider",
-                "value": 15
-            },
-            "schemecolor": {
-                "order": 0,
-                "text": "ui_browse_properties_scheme_color",
-                "type": "color",
-                "value": "0 0 0"
-            },
-            "showconsole": {
-                "condition": "advancedoptions.value",
-                "order": 11,
-                "text": "Show console",
-                "type": "bool",
-                "value": false
-            },
-            "transitioneffecttime": {
-                "condition": "customimage.value == '' && customrandomdirectory.value != '' && advancedoptions.value",
-                "editable": true,
-                "max": 1000,
-                "min": 100,
-                "order": 16,
-                "text": "Transition duration (ms)",
-                "type": "slider",
-                "value": 400
-            },
-            "transitionstyle": {
-                "condition": "customimage.value == '' && customrandomdirectory.value != ''",
-                "options": [{
-                        "label": "Fade",
-                        "value": "fade"
-                    },
-                    {
-                        "label": "None",
-                        "value": "none"
-                    }
-                ],
-                "order": 9,
-                "text": "Transition style",
-                "type": "combo",
-                "value": "fade"
-            }
-        }
-    },
-    "monetization": false,
-    "preview": "preview.jpg",
-    "tags": ["Unspecified"],
-    "title": "Blur-Wallpaper",
-    "type": "web",
-    "visibility": "public",
-    "workshopid": 1125984664
+	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image.\n\nVersion 3.0 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/MultiFilter-wallpaper",
+	"file" : "index.html",
+	"general" :
+	{
+		"properties" :
+		{
+			"adv-options-title" :
+			{
+				"condition" : "advancedoptions.value",
+				"order" : 10,
+				"text" : "<br><h4><b>Advanced Options</b></h4>",
+				"type" : "text"
+			},
+			"advancedoptions" :
+			{
+				"order" : 2,
+				"text" : "ui_settings_advanced",
+				"type" : "bool",
+				"value" : false
+			},
+			"background-image" :
+			{
+				"order" : 3,
+				"text" : "<h4><b>Background image</b></h4>",
+				"type" : "text"
+			},
+			"background-property" :
+			{
+				"condition" : "customimage.value != '' || customrandomdirectory.value != ''",
+				"order" : 6,
+				"text" : "<br><h4><b>Background properties</b></h4>",
+				"type" : "text"
+			},
+			"backgroundcolor" :
+			{
+				"order" : 1,
+				"text" : "ui_editor_scene_options_background_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"blur" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable" : true,
+				"max" : 10,
+				"min" : 0,
+				"order" : 6.1100000000000003,
+				"text" : "Blur (px)",
+				"type" : "slider",
+				"value" : 5
+			},
+			"brightness" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable" : true,
+				"max" : 300,
+				"min" : 0,
+				"order" : 6.3099999999999996,
+				"text" : "Brightness (%)",
+				"type" : "slider",
+				"value" : 100
+			},
+			"consolealpha" :
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"max" : 100,
+				"min" : 0,
+				"order" : 12,
+				"text" : "Console alpha (%)",
+				"type" : "slider",
+				"value" : 75
+			},
+			"consolebgcolor" :
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 14,
+				"text" : "Console background color",
+				"type" : "color",
+				"value" : "0.45 0.45 0.45"
+			},
+			"consolefontcolor" :
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 13,
+				"text" : "Console font color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"contrast" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable" : true,
+				"max" : 300,
+				"min" : 0,
+				"order" : 6.4100000000000001,
+				"text" : "Contrast (%)",
+				"type" : "slider",
+				"value" : 100
+			},
+			"customimage" :
+			{
+				"condition" : "customrandomdirectory.value == ''",
+				"order" : 4,
+				"text" : "Single image",
+				"type" : "file",
+				"value" : ""
+			},
+			"customrandomdirectory" :
+			{
+				"condition" : "customimage.value == ''",
+				"mode" : "ondemand",
+				"order" : 5,
+				"text" : "Random directory",
+				"type" : "directory",
+				"value" : ""
+			},
+			"grayscale" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"max" : 100,
+				"min" : 0,
+				"order" : 6.5099999999999998,
+				"text" : "Grayscale (%)",
+				"type" : "slider",
+				"value" : 0
+			},
+			"hideauthor" :
+			{
+				"condition" : "showconsole.value && advancedoptions.value",
+				"order" : 15,
+				"text" : "Hide author",
+				"type" : "bool",
+				"value" : true
+			},
+			"huerotate" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"max" : 360,
+				"min" : 0,
+				"order" : 6.7999999999999998,
+				"text" : "Hue rotation angle",
+				"type" : "slider",
+				"value" : 0
+			},
+			"invert" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"max" : 100,
+				"min" : 0,
+				"order" : 6.6100000000000003,
+				"text" : "Invert (%)",
+				"type" : "slider",
+				"value" : 0
+			},
+			"minutes" :
+			{
+				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
+				"editable" : true,
+				"max" : 180,
+				"min" : 0,
+				"order" : 8,
+				"text" : "Change time (min)",
+				"type" : "slider",
+				"value" : 15
+			},
+			"opacity" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"max" : 100,
+				"min" : 0,
+				"order" : 6.0099999999999998,
+				"text" : "Opacity (%)",
+				"type" : "slider",
+				"value" : 100
+			},
+			"saturation" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable" : true,
+				"max" : 300,
+				"min" : 0,
+				"order" : 6.21,
+				"text" : "Saturation (%)",
+				"type" : "slider",
+				"value" : 100
+			},
+			"scale" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable" : true,
+				"max" : 200,
+				"min" : 100,
+				"order" : 6.0199999999999996,
+				"text" : "Scale (%)",
+				"type" : "slider",
+				"value" : 100
+			},
+			"schemecolor" :
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"sepia" :
+			{
+				"condition" : "(customimage.value != '' || customrandomdirectory.value != '')",
+				"max" : 100,
+				"min" : 0,
+				"order" : 6.71,
+				"text" : "Sepia (%)",
+				"type" : "slider",
+				"value" : 0
+			},
+			"showconsole" :
+			{
+				"condition" : "advancedoptions.value",
+				"order" : 11,
+				"text" : "Show console",
+				"type" : "bool",
+				"value" : false
+			},
+			"transitioneffecttime" :
+			{
+				"condition" : "customimage.value == '' && customrandomdirectory.value != '' && advancedoptions.value",
+				"editable" : true,
+				"max" : 1000,
+				"min" : 100,
+				"order" : 16,
+				"text" : "Transition duration (ms)",
+				"type" : "slider",
+				"value" : 400
+			},
+			"transitionstyle" :
+			{
+				"condition" : "customimage.value == '' && customrandomdirectory.value != ''",
+				"options" :
+				[
+					{
+						"label" : "Fade",
+						"value" : "fade"
+					},
+					{
+						"label" : "None",
+						"value" : "none"
+					}
+				],
+				"order" : 9,
+				"text" : "Transition style",
+				"type" : "combo",
+				"value" : "fade"
+			}
+		}
+	},
+	"monetization" : false,
+	"preview" : "preview.jpg",
+	"tags" : [ "Unspecified" ],
+	"title" : "MultiFilter-Wallpaper",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : 1125984664
 }
