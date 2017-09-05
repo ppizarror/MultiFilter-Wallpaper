@@ -116,10 +116,40 @@ window.wallpaperPropertyListener = {
             }
         }
 
-        // Read blur
+        // Blur effect
+        if (properties.effectblur) {
+            try {
+                effects.blur.enabled = properties.effectblur.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Blur value
         if (properties.blur) {
             try {
-                blur = properties.blur.value;
+                effects.blur.value = properties.blur.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Grayscale effect
+        if (properties.effectgrayscale){
+            try {
+                effects.grayscale.enabled = properties.effectgrayscale.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Grayscale value
+        if (properties.grayscale){
+            try {
+                effects.grayscale.value = properties.grayscale.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));

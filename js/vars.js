@@ -31,9 +31,21 @@ var themedate = '(03/09/2017)';
 var themeversion = '2.0';
 
 /*
+Effects
+*/
+var effects = {
+    "blur": {
+        "value": 0,
+        "enabled": false
+    },
+    "grayscale": {
+        "value": 0,
+        "enabled": false
+    }
+}
+/*
 Global variables
 */
-var blur; // Set wallpaper blur
 var consolealpha; // Console opacity
 var consolescale; // Console scale
 var defaultcolorcss = ''; // Default background color

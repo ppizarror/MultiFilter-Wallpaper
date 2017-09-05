@@ -56,10 +56,9 @@ function setWallpaper(file, showmsg) {
     try {
         if (file) {
             $('#background-img').css('background-image', 'url(file:///' + file + ')');
-            $('#background-img').css('-webkit-filter', 'blur(' + blur + 'px)');
-            $('#background-img').css('filter', 'blur(' + blur + 'px)');
-            $('#background-img').css('transform', 'scale(1.1)');
+            applyCssEffects('#background-img')
             if (lastimg != '' && israndom) {
+                // Display auxiliar background div
                 $('#background-aux').css('display', 'block');
                 $('#background-aux').css('opacity', '1.0');
                 // Enable background aux image
@@ -87,43 +86,37 @@ function setWallpaper(file, showmsg) {
             } else {
                 $('#background-aux').css('background-image', 'url(file:///' + file + ')');
             }
-            $('#background-aux').css('-webkit-filter', 'blur(' + blur + 'px)');
-            $('#background-aux').css('filter', 'blur(' + blur + 'px)');
-            $('#background-aux').css('transform', 'scale(1.1)');
+            applyCssEffects('#background-aux');
             if (israndom) {
                 lastimg = file;
             }
             if (showmsg) {
-                if (israndom) {
-                    setTimeout(function() {
-                        if (blur > 0) {
-                            consolemsg('Wallpaper set: "<i>{0}</i>" | Blur {1}px.'.format(cutword(file, maxwordlengthdirs), blur));
-                        } else {
-                            consolemsg('Wallpaper set: "<i>{0}</i>" | Blur disabled.'.format(cutword(file, maxwordlengthdirs)));
-                        }
-                    }, imagewaittime);
-                } else {
-                    if (blur > 0) {
-                        consolemsg('Wallpaper set: "<i>{0}</i>" | Blur {1}px.'.format(cutword(file, maxwordlengthdirs), blur));
+                function wallpaperConsoleStatus() {
+                    b1 = 'Wallpaper set: <i>{0}</i>'.format(cutword(file, maxwordlengthdirs));
+                    b2 = "";
+                    if (effects.blur.enabled && effects.blur.value > 0) {
+                        b2 += 'Blur {1}px'.format(effects.blur.value);
                     } else {
-                        consolemsg('Wallpaper set: "<i>{0}</i>" | Blur disabled.'.format(cutword(file, maxwordlengthdirs)));
+                        b2 += 'Blur disabled';
                     }
+                    consolemsg('{0} | {1}.'.format(b1, b2));
+                }
+                if (israndom) {
+                    setTimeout(wallpaperConsoleStatus, imagewaittime);
+                } else {
+                    wallpaperConsoleStatus();
                 }
             }
         } else {
             if (defaultcolorcss != '') {
-                $('#background-img').css('background-color', defaultcolorcss);
-                $('#background-img').css('background-image', '');
-                $('#background-img').css('-webkit-filter', '');
-                $('#background-img').css('filter', '');
-                $('#background-img').css('transform', '');
                 $('#background-aux').css('background-color', defaultcolorcss);
                 $('#background-aux').css('background-image', '');
-                $('#background-aux').css('-webkit-filter', '');
-                $('#background-aux').css('filter', '');
-                $('#background-aux').css('transform', '');
-                $('#background-aux').css('display', 'nome');
+                $('#background-aux').css('display', 'none');
                 $('#background-aux').css('opacity', '1.0');
+                $('#background-img').css('background-color', defaultcolorcss);
+                $('#background-img').css('background-image', '');
+                restoreCssEffects('#background-aux');
+                restoreCssEffects('#background-img');
             }
             try {
                 if (selectedimg != '') {
@@ -141,6 +134,36 @@ function setWallpaper(file, showmsg) {
         consolemsg(parseException(e));
     } finally {}
 
+}
+
+function applyCssEffects(div_id) {
+    // Apply css effects to #div_id
+    restoreCssEffects(div_id);
+    filterline = '';
+
+    // Add effects to filterline
+    if (effects.blur.enabled) {
+        filterline+='blur(' + effects.blur.value + 'px) ';
+    }
+    if (effects.grayscale.enabled) {
+        filterline+='grayscale(' + effects.grayscale.value + '%) ';
+    }
+
+    // Set filterline
+    $(div_id).css('-webkit-filter', filterline);
+    $(div_id).css('filter', filterline);
+
+    // Particular css properties
+    if (effects.blur.enabled) {
+        $(div_id).css('transform', 'scale(1.05)');
+    }
+}
+
+function restoreCssEffects(div_id) {
+    // Restore css effects
+    $(div_id).css('-webkit-filter', '');
+    $(div_id).css('filter', '');
+    $(div_id).css('transform', '');
 }
 
 function clearAll() {

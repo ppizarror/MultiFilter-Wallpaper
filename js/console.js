@@ -29,8 +29,14 @@ var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.fo
 var consolemsglistinfo = [''];
 var maxmsg = 13;
 var msgadded = 1;
-var consolewidth = 500;
-var consoleheight = 200;
+
+// Console configuration
+var consolecfg = {
+    "height": 200,
+    "width": 500,
+    "alpha": 1.0,
+    "show": false
+}
 
 function consolemsg(msg) {
     // Create a message on the console
@@ -92,8 +98,8 @@ function setRgbLineMsg(c) {
 
 function consoleScaleTo(sc) {
     // Change scale of console
-    newh = consoleheight * sc;
-    neww = consolewidth * sc;
+    newh = consolecfg.height * sc;
+    neww = consolecfg.width * sc;
     newhcorr = -86 - (newh - consoleheight);
     $('#console').css('width', '{0}px'.format(neww));
     $('#console').css('height', '{0}px'.format(newh));
