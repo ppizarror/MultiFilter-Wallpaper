@@ -116,10 +116,29 @@ window.wallpaperPropertyListener = {
             }
         }
 
+        // Scale value
+        if (properties.scale) {
+            try {
+                if (properties.scale.value > 0) {
+                    effects.scale.value = properties.scale.value / 100;
+                    effects.scale.value += effects.scale.baseadd;
+                } else {
+                    consolemsg(parseError('Scale must be greater than 0'));
+                }
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Blur value
         if (properties.blur) {
             try {
-                effects.blur.value = properties.blur.value;
+                if (properties.blur.value >= 0) {
+                    effects.blur.value = properties.blur.value;
+                } else {
+                    consolemsg(parseError("Blur can't be a negative number"));
+                }
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -127,7 +146,7 @@ window.wallpaperPropertyListener = {
         }
 
         // Grayscale value
-        if (properties.grayscale){
+        if (properties.grayscale) {
             try {
                 effects.grayscale.value = properties.grayscale.value;
                 setWallpaper(selectedimg, true);
@@ -137,9 +156,13 @@ window.wallpaperPropertyListener = {
         }
 
         // Brightness value
-        if (properties.brightness){
+        if (properties.brightness) {
             try {
-                effects.brightness.value = properties.brightness.value;
+                if (properties.brightness.value >= 0) {
+                    effects.brightness.value = properties.brightness.value;
+                } else {
+                    consolemsg(parseError("Brightness can't be negative"));
+                }
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -147,9 +170,27 @@ window.wallpaperPropertyListener = {
         }
 
         // Contrast value
-        if (properties.contrast){
+        if (properties.contrast) {
             try {
-                effects.contrast.value = properties.contrast.value;
+                if (properties.contrast.value >= 0) {
+                    effects.contrast.value = properties.contrast.value;
+                } else {
+                    consolemsg(parseError("Contrast can't be negative"));
+                }
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Saturation value
+        if (properties.saturation) {
+            try {
+                if (properties.saturation.value >= 0){
+                    effects.saturation.value = properties.saturation.value;
+                }else {
+                    consolemsg(parseError("Saturation can't be negative"));
+                }
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -157,7 +198,7 @@ window.wallpaperPropertyListener = {
         }
 
         // Hue rotation value
-        if (properties.huerotate){
+        if (properties.huerotate) {
             try {
                 effects.huerotate.value = properties.huerotate.value;
                 setWallpaper(selectedimg, true);
@@ -167,7 +208,7 @@ window.wallpaperPropertyListener = {
         }
 
         // Invert value
-        if (properties.invert){
+        if (properties.invert) {
             try {
                 effects.invert.value = properties.invert.value;
                 setWallpaper(selectedimg, true);
@@ -176,20 +217,10 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
-        // Saturation value
-        if (properties.saturation){
+        // Sepia value
+        if (properties.sepia) {
             try {
-                effects.saturation.value = properties.saturation.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
-        // Opacity value
-        if (properties.opacity){
-            try {
-                effects.opacity.value = properties.opacity.value;
+                effects.sepia.value = properties.sepia.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -277,7 +308,7 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
-		/*
+        /*
         // Console scale
         if (properties.consolescale) {
             try {

@@ -94,7 +94,12 @@ function setAuthorStatus(status) {
 
 function parseException(e) {
     // Set exception message
-    return "<span class='msgexception'>EXCEPTION!</span> {0} {1}".format(e.message, e.stack);
+    return "<span class='msgexception'>EXCEPTION!</span> {0} {1}.".format(e.message, e.stack);
+}
+
+function parseError(e) {
+    // Set exception message
+    return "<span class='msgexception'>ERROR!</span> {0}.".format(e);
 }
 
 function setRgbLineMsg(c) {
@@ -116,7 +121,7 @@ function consoleScale() {
 function wallpaperConsoleStatus(file) {
     // Write wallpaper status
     b1 = 'Wallpaper set: <i>{0}</i>'.format(cutword(file, maxwordlengthdirs));
-    b2 = 'Opacity {0}%{1}'.format(effects.opacity.value, cssfilterseparator);
+    b2 = 'Opacity {0}%{1}Scale {2}%{1}'.format(effects.opacity.value, cssfilterseparator, (effects.scale.value - effects.scale.baseadd) * 100);
     if (effects.blur.enabled && effects.blur.value > 0) {
         b2 += 'Blur {0}px'.format(effects.blur.value);
     } else {
@@ -169,6 +174,11 @@ function wallpaperConsoleStatus(file) {
         b2 += 'Saturate {0}%'.format(effects.saturation.value);
     } else {
         b2 += 'Saturation disabled';
+    }
+    if (effects.sepia.enabled && effects.sepia.value > 0) {
+        b2 += 'Sepia {0}%'.format(effects.sepia.value);
+    } else {
+        b2 += 'Sepia disabled';
     }
 
     // Show message on console

@@ -1,5 +1,5 @@
 {
-    "description": "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, transition effects, advanced options, etc.\n\nVersion 2.0 (03/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/blur-wallpaper",
+    "description": "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a blurry wallpaper. Fully customizable: blur, transition time, transition effects, advanced options, etc.\n\nVersion 3.0 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/blur-wallpaper",
     "file": "index.html",
     "general": {
         "properties": {
@@ -46,7 +46,7 @@
                 "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 100,
                 "min": 0,
-                "order": 6.21,
+                "order": 6.51,
                 "text": "Grayscale (%)",
                 "type": "slider",
                 "value": 0
@@ -75,7 +75,7 @@
                 "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 360,
                 "min": 0,
-                "order": 6.71,
+                "order": 6.8,
                 "text": "Hue rotation angle",
                 "type": "slider",
                 "value": 0
@@ -84,7 +84,7 @@
                 "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 100,
                 "min": 0,
-                "order": 6.8,
+                "order": 6.71,
                 "text": "Sepia (%)",
                 "type": "slider",
                 "value": 0
@@ -103,7 +103,7 @@
 				"editable": true,
                 "max": 300,
                 "min": 0,
-                "order": 6.51,
+                "order": 6.21,
                 "text": "Saturation (%)",
                 "type": "slider",
                 "value": 100
@@ -117,6 +117,16 @@
                 "type": "slider",
                 "value": 100
             },
+			"scale": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
+				"editable": true,
+                "max": 200,
+                "min": 100,
+                "order": 6.02,
+                "text": "Scale (%)",
+                "type": "slider",
+                "value": 100
+            },
             "consolealpha": {
                 "condition": "showconsole.value && advancedoptions.value",
                 "max": 100,
@@ -124,7 +134,7 @@
                 "order": 12,
                 "text": "Console alpha (%)",
                 "type": "slider",
-                "value": 50
+                "value": 75
             },
             "consolebgcolor": {
                 "condition": "showconsole.value && advancedoptions.value",

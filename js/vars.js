@@ -27,8 +27,8 @@ SOFTWARE.
 /*
 Theme version
 */
-var themedate = '(03/09/2017)';
-var themeversion = '2.0';
+var themedate = '(05/09/2017)';
+var themeversion = '3.0';
 
 /*
 Effects
@@ -43,7 +43,7 @@ var effects = {
         "enabled": true
     },
     "contrast": {
-        "value": 0,
+        "value": 100,
         "enabled": true
     },
     "grayscale": {
@@ -63,8 +63,13 @@ var effects = {
         "enabled": true
     },
     "saturation": {
-        "value": 0,
+        "value": 100,
         "enabled": true
+    },
+    "scale": {
+        "value": 1.00,
+        "enabled": true,
+        "baseadd": 0.02
     },
     "sepia": {
         "value": 0,

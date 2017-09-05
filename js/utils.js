@@ -159,15 +159,16 @@ function applyCssEffects(div_id) {
     if (effects.opacity.enabled) {
         filterline += 'opacity(' + effects.opacity.value + '%) ';
     }
+    if (effects.sepia.enabled) {
+        filterline += 'sepia(' + effects.sepia.value + '%) ';
+    }
 
     // Set filterline
     $(div_id).css('-webkit-filter', filterline);
     $(div_id).css('filter', filterline);
 
     // Particular css properties
-    if (effects.blur.enabled) {
-        $(div_id).css('transform', 'scale(1.05)');
-    }
+    $(div_id).css('transform', 'scale(' + effects.scale.value + ')');
 }
 
 function restoreCssEffects(div_id) {
