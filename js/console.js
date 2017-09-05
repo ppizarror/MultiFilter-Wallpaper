@@ -27,6 +27,7 @@ SOFTWARE.
 // Console messages
 var consolemsglist = ['<b>[CONSOLE] Blur-Wallpaper v{0} {1} by ppizarror</b>'.format(themeversion, themedate)];
 var consolemsglistinfo = [''];
+var cssfilterseparator = ", " // Separator between filters
 var maxmsg = 13; // Maximum number of active messages
 var maxwordlengthdirs = 30; // Maximun src length of file shown on console
 var msgadded = 1; // Total messages added
@@ -115,14 +116,14 @@ function consoleScale() {
 function wallpaperConsoleStatus(file) {
     // Write wallpaper status
     b1 = 'Wallpaper set: <i>{0}</i>'.format(cutword(file, maxwordlengthdirs));
-    b2 = "";
+    b2 = 'Opacity {0}%{1}'.format(effects.opacity.value, cssfilterseparator);
     if (effects.blur.enabled && effects.blur.value > 0) {
         b2 += 'Blur {0}px'.format(effects.blur.value);
     } else {
         b2 += 'Blur disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
     if (effects.grayscale.enabled && effects.grayscale.value > 0) {
         b2 += 'Grayscale {0}%'.format(effects.grayscale.value);
@@ -130,23 +131,23 @@ function wallpaperConsoleStatus(file) {
         b2 += 'Grayscale disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
-    if (effects.brightness.enabled && effects.brightness.value > 0) {
+    if (effects.brightness.enabled && effects.brightness.value != 100) {
         b2 += 'Brightness {0}%'.format(effects.brightness.value);
     } else {
         b2 += 'Brightness disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
-    if (effects.contrast.enabled && effects.contrast.value > 0) {
+    if (effects.contrast.enabled && effects.contrast.value != 100) {
         b2 += 'Contrast {0}%'.format(effects.contrast.value);
     } else {
         b2 += 'Contrast disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
     if (effects.huerotate.enabled && effects.huerotate.value > 0) {
         b2 += 'Hue rotation angle {0}deg'.format(effects.huerotate.value);
@@ -154,7 +155,7 @@ function wallpaperConsoleStatus(file) {
         b2 += 'Hue rotation disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
     if (effects.invert.enabled && effects.invert.value > 0) {
         b2 += 'Invert {0}%'.format(effects.invert.value);
@@ -162,12 +163,14 @@ function wallpaperConsoleStatus(file) {
         b2 += 'Invert disabled';
     }
     if (b2 != "") {
-        b2 += ", ";
+        b2 += cssfilterseparator;
     }
-    if (effects.saturation.enabled && effects.saturation.value > 0) {
+    if (effects.saturation.enabled && effects.saturation.value != 100) {
         b2 += 'Saturate {0}%'.format(effects.saturation.value);
     } else {
         b2 += 'Saturation disabled';
     }
+
+    // Show message on console
     consolemsg('{0} | {1}.'.format(b1, b2));
 }

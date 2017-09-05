@@ -105,6 +105,7 @@ function setWallpaper(file, showmsg) {
                 $('#background-aux').css('background-image', '');
                 $('#background-aux').css('display', 'none');
                 $('#background-aux').css('opacity', '1.0');
+                $('#background-colored').css('background-color', defaultcolorcss);
                 $('#background-img').css('background-color', defaultcolorcss);
                 $('#background-img').css('background-image', '');
                 restoreCssEffects('#background-aux');
@@ -154,6 +155,9 @@ function applyCssEffects(div_id) {
     }
     if (effects.saturation.enabled) {
         filterline += 'saturate(' + effects.saturation.value + '%) ';
+    }
+    if (effects.opacity.enabled) {
+        filterline += 'opacity(' + effects.opacity.value + '%) ';
     }
 
     // Set filterline

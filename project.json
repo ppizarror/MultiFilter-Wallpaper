@@ -33,7 +33,7 @@
                 "value": "0 0 0"
             },
             "blur": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectblur.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "editable": true,
                 "max": 10,
                 "min": 0,
@@ -43,23 +43,16 @@
                 "value": 5
             },
 			"grayscale": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectgrayscale.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 100,
                 "min": 0,
                 "order": 6.21,
                 "text": "Grayscale (%)",
                 "type": "slider",
-                "value": 50
-            },
-			"effectgrayscale": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.2,
-                "text": "Add grayscale",
-                "type": "bool",
-                "value": false
+                "value": 0
             },
 			"brightness": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectbrightness.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable": true,
                 "max": 300,
                 "min": 0,
@@ -68,15 +61,8 @@
                 "type": "slider",
                 "value": 100
             },
-			"effectbrightness": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.3,
-                "text": "Add brightness",
-                "type": "bool",
-                "value": false
-            },
 			"contrast": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectcontrast.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable": true,
                 "max": 300,
                 "min": 0,
@@ -85,31 +71,26 @@
                 "type": "slider",
                 "value": 100
             },
-			"effectcontrast": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.4,
-                "text": "Add contrast",
-                "type": "bool",
-                "value": false
-            },
 			"huerotate": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effecthuerotate.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 360,
                 "min": 0,
-                "order": 6.51,
+                "order": 6.71,
                 "text": "Hue rotation angle",
                 "type": "slider",
                 "value": 0
             },
-			"effecthuerotate": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.5,
-                "text": "Hue rotation",
-                "type": "bool",
-                "value": false
+			"sepia": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
+                "max": 100,
+                "min": 0,
+                "order": 6.8,
+                "text": "Sepia (%)",
+                "type": "slider",
+                "value": 0
             },
 			"invert": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectinvert.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
                 "max": 100,
                 "min": 0,
                 "order": 6.61,
@@ -117,29 +98,24 @@
                 "type": "slider",
                 "value": 0
             },
-			"effectinvert": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.6,
-                "text": "Invert",
-                "type": "bool",
-                "value": false
-            },
 			"saturation": {
-                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectsaturation.value",
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
 				"editable": true,
                 "max": 300,
                 "min": 0,
-                "order": 6.71,
+                "order": 6.51,
                 "text": "Saturation (%)",
                 "type": "slider",
                 "value": 100
             },
-			"effectsaturation": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.7,
-                "text": "Add saturation",
-                "type": "bool",
-                "value": false
+			"opacity": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '')",
+                "max": 100,
+                "min": 0,
+                "order": 6.01,
+                "text": "Opacity (%)",
+                "type": "slider",
+                "value": 100
             },
             "consolealpha": {
                 "condition": "showconsole.value && advancedoptions.value",
@@ -178,13 +154,6 @@
                 "text": "Random directory",
                 "type": "directory",
                 "value": ""
-            },
-            "effectblur": {
-                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
-                "order": 6.1,
-                "text": "Add blur",
-                "type": "bool",
-                "value": true
             },
             "hideauthor": {
                 "condition": "showconsole.value && advancedoptions.value",

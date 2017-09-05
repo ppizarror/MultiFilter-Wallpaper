@@ -116,30 +116,10 @@ window.wallpaperPropertyListener = {
             }
         }
 
-        // Blur effect
-        if (properties.effectblur) {
-            try {
-                effects.blur.enabled = properties.effectblur.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
         // Blur value
         if (properties.blur) {
             try {
                 effects.blur.value = properties.blur.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
-        // Grayscale effect
-        if (properties.effectgrayscale){
-            try {
-                effects.grayscale.enabled = properties.effectgrayscale.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -156,30 +136,10 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
-        // Brightness effect
-        if (properties.effectbrightness){
-            try {
-                effects.brightness.enabled = properties.effectbrightness.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
         // Brightness value
         if (properties.brightness){
             try {
                 effects.brightness.value = properties.brightness.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
-        // Contrast effect
-        if (properties.effectcontrast){
-            try {
-                effects.contrast.enabled = properties.effectcontrast.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -196,30 +156,10 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
-        // Hue rotation effect
-        if (properties.effecthuerotate){
-            try {
-                effects.huerotate.enabled = properties.effecthuerotate.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
         // Hue rotation value
         if (properties.huerotate){
             try {
                 effects.huerotate.value = properties.huerotate.value;
-                setWallpaper(selectedimg, true);
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
-        // Invert effect
-        if (properties.effectinvert){
-            try {
-                effects.invert.enabled = properties.effectinvert.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
@@ -236,20 +176,20 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
-        // Saturation effect
-        if (properties.effectsaturation){
+        // Saturation value
+        if (properties.saturation){
             try {
-                effects.saturation.enabled = properties.effectsaturation.value;
+                effects.saturation.value = properties.saturation.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
         }
 
-        // Saturation value
-        if (properties.saturation){
+        // Opacity value
+        if (properties.opacity){
             try {
-                effects.saturation.value = properties.saturation.value;
+                effects.opacity.value = properties.opacity.value;
                 setWallpaper(selectedimg, true);
             } catch (e) {
                 consolemsg(parseException(e));

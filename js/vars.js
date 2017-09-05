@@ -36,31 +36,39 @@ Effects
 var effects = {
     "blur": {
         "value": 0,
-        "enabled": false
+        "enabled": true
     },
     "brightness": {
         "value": 0,
-        "enabled": false
+        "enabled": true
     },
     "contrast": {
         "value": 0,
-        "enabled": false
+        "enabled": true
     },
     "grayscale": {
         "value": 0,
-        "enabled": false
+        "enabled": true
     },
     "huerotate": {
         "value": 0,
-        "enabled": false
+        "enabled": true
     },
     "invert": {
         "value": 0,
-        "enabled": false
+        "enabled": true
+    },
+    "opacity": {
+        "value": 100,
+        "enabled": true
     },
     "saturation": {
         "value": 0,
-        "enabled": false
+        "enabled": true
+    },
+    "sepia": {
+        "value": 0,
+        "enabled": true
     },
 }
 
