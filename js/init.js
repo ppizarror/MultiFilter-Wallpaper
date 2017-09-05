@@ -207,6 +207,7 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
+		/*
         // Console scale
         if (properties.consolescale) {
             try {
@@ -217,6 +218,7 @@ window.wallpaperPropertyListener = {
                 consolemsg(parseException(e));
             } finally {}
         }
+		*/
 
         // Transition style
         if (properties.transitionstyle) {
