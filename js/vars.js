@@ -53,6 +53,10 @@ var effects = {
     "huerotate": {
         "value": 0,
         "enabled": false
+    },
+    "invert": {
+        "value": 0,
+        "enabled": false
     }
 }
 

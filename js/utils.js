@@ -146,6 +146,12 @@ function applyCssEffects(div_id) {
     if (effects.contrast.enabled) {
         filterline += 'contrast(' + effects.contrast.value + '%) ';
     }
+    if (effects.huerotate.enabled) {
+        filterline += 'hue-rotate(' + effects.huerotate.value + 'deg) ';
+    }
+    if (effects.invert.enabled) {
+        filterline += 'invert(' + effects.invert.value + '%) ';
+    }
 
     // Set filterline
     $(div_id).css('-webkit-filter', filterline);

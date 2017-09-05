@@ -145,5 +145,21 @@ function wallpaperConsoleStatus(file) {
     } else {
         b2 += 'Contrast disabled';
     }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.huerotate.enabled && effects.huerotate.value > 0) {
+        b2 += 'Hue rotation angle {0}deg'.format(effects.huerotate.value);
+    } else {
+        b2 += 'Hue rotation disabled';
+    }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.invert.enabled && effects.invert.value > 0) {
+        b2 += 'Invert {0}%'.format(effects.invert.value);
+    } else {
+        b2 += 'Invert disabled';
+    }
     consolemsg('{0} | {1}.'.format(b1, b2));
 }

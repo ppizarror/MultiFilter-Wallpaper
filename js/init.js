@@ -196,6 +196,46 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
+        // Hue rotation effect
+        if (properties.effecthuerotate){
+            try {
+                effects.huerotate.enabled = properties.effecthuerotate.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Hue rotation value
+        if (properties.huerotate){
+            try {
+                effects.huerotate.value = properties.huerotate.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Invert effect
+        if (properties.effectinvert){
+            try {
+                effects.invert.enabled = properties.effectinvert.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Invert value
+        if (properties.invert){
+            try {
+                effects.invert.value = properties.invert.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Minute transition
         if (properties.minutes) {
             randomtime = properties.minutes.value * 60000;
