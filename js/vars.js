@@ -35,6 +35,7 @@ Global variables
 */
 var blur; // Set wallpaper blur
 var consolealpha; // Console opacity
+var consolescale; // Console scale
 var defaultcolorcss = ''; // Default background color
 var defaultconsolebgcolor = ''; // Console background color
 var defaultconsolefontcolor = ''; // Console font color

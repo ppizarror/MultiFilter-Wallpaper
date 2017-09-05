@@ -67,7 +67,7 @@ body {
 }
 
 #console {
-    margin: auto;
+    margin: 0 0;
     position: absolute;
     top: 0;
     /*left: 0;
@@ -80,7 +80,7 @@ body {
     opacity: 0.0;
     display: none;
     margin-right: 45px;
-    margin-top: -85px;
+    margin-top: -86px;
     z-index: 2;
 }
 

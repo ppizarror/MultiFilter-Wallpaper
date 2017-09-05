@@ -207,6 +207,17 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
+        // Console scale
+        if (properties.consolescale) {
+            try {
+                consolescale = properties.consolescale.value / 100;
+                consoleScaleTo(consolescale);
+                consolemsg('Console scale set to {0}.'.format(consolescale));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Transition style
         if (properties.transitionstyle) {
             try {
