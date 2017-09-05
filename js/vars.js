@@ -57,7 +57,11 @@ var effects = {
     "invert": {
         "value": 0,
         "enabled": false
-    }
+    },
+    "saturation": {
+        "value": 0,
+        "enabled": false
+    },
 }
 
 /*

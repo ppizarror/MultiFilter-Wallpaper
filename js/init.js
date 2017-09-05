@@ -236,6 +236,26 @@ window.wallpaperPropertyListener = {
             } finally {}
         }
 
+        // Saturation effect
+        if (properties.effectsaturation){
+            try {
+                effects.saturation.enabled = properties.effectsaturation.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Saturation value
+        if (properties.saturation){
+            try {
+                effects.saturation.value = properties.saturation.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Minute transition
         if (properties.minutes) {
             randomtime = properties.minutes.value * 60000;

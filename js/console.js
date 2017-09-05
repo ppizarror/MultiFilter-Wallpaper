@@ -161,5 +161,13 @@ function wallpaperConsoleStatus(file) {
     } else {
         b2 += 'Invert disabled';
     }
+    if (b2 != "") {
+        b2 += ", ";
+    }
+    if (effects.saturation.enabled && effects.saturation.value > 0) {
+        b2 += 'Saturate {0}%'.format(effects.saturation.value);
+    } else {
+        b2 += 'Saturation disabled';
+    }
     consolemsg('{0} | {1}.'.format(b1, b2));
 }

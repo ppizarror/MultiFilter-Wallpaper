@@ -152,6 +152,9 @@ function applyCssEffects(div_id) {
     if (effects.invert.enabled) {
         filterline += 'invert(' + effects.invert.value + '%) ';
     }
+    if (effects.saturation.enabled) {
+        filterline += 'saturate(' + effects.saturation.value + '%) ';
+    }
 
     // Set filterline
     $(div_id).css('-webkit-filter', filterline);

@@ -124,6 +124,23 @@
                 "type": "bool",
                 "value": false
             },
+			"saturation": {
+                "condition": "(customimage.value != '' || customrandomdirectory.value != '') && effectsaturation.value",
+				"editable": true,
+                "max": 300,
+                "min": 0,
+                "order": 6.71,
+                "text": "Saturation (%)",
+                "type": "slider",
+                "value": 100
+            },
+			"effectsaturation": {
+                "condition": "customimage.value != '' || customrandomdirectory.value != ''",
+                "order": 6.7,
+                "text": "Add saturation",
+                "type": "bool",
+                "value": false
+            },
             "consolealpha": {
                 "condition": "showconsole.value && advancedoptions.value",
                 "max": 100,
