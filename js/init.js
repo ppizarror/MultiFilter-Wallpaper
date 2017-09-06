@@ -1,9 +1,9 @@
 /*
 MULTIFILTER-WALLPAPER
-Github: https://github.com/ppizarror/MultiFilter-wallpaper
+Github: https://github.com/ppizarror/MultiFilter-Wallpaper
 
 MIT License
-Copyright (c) 2017 Pablo Pizarro @ppizarror.com
+Copyright (c) 2017 Pablo Pizarro R. @ ppizarror.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -73,11 +73,23 @@ function setWallpaperSingleImage() {
 window.wallpaperPropertyListener = {
     applyUserProperties: function(properties) {
 
+        // Background color if no image
+        if (properties.backgroundcolor) {
+            try {
+                defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
+                consolemsg('Default background color: {0}.'.format(setRgbLineMsg(defaultcolorcss)));
+                setWallpaper();
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
         // Load random directory
         if (properties.customrandomdirectory) {
             if (properties.customrandomdirectory.value) {
                 try {
                     consolemsg('Set random directory "<i>{0}</i>".'.format(cutword(properties.customrandomdirectory.value, maxwordlengthdirs)));
+                    setWallpaper(false, false);
                     israndom = true;
                     selectedfolder = properties.customrandomdirectory.value;
                     selectedimg = '';
@@ -103,6 +115,7 @@ window.wallpaperPropertyListener = {
             if (properties.customimage.value) {
                 try {
                     clearRandomFunTimer();
+                    setWallpaper(false, false);
                     setWallpaper(properties.customimage.value, true);
                     israndom = false;
                     selectedimg = properties.customimage.value;
@@ -114,6 +127,16 @@ window.wallpaperPropertyListener = {
             } else {
                 clearAll();
             }
+        }
+
+        // Opacity value
+        if (properties.opacity) {
+            try {
+                effects.opacity.value = properties.opacity.value;
+                setWallpaper(selectedimg, true);
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Scale value
@@ -186,9 +209,9 @@ window.wallpaperPropertyListener = {
         // Saturation value
         if (properties.saturation) {
             try {
-                if (properties.saturation.value >= 0){
+                if (properties.saturation.value >= 0) {
                     effects.saturation.value = properties.saturation.value;
-                }else {
+                } else {
                     consolemsg(parseError("Saturation can't be negative"));
                 }
                 setWallpaper(selectedimg, true);
@@ -243,17 +266,6 @@ window.wallpaperPropertyListener = {
             }
         }
 
-        // Background color if no image
-        if (properties.backgroundcolor) {
-            try {
-                defaultcolorcss = createRGBColor(properties.backgroundcolor.value);
-                consolemsg('Default background color: {0}.'.format(setRgbLineMsg(defaultcolorcss)));
-                setWallpaper();
-            } catch (e) {
-                consolemsg(parseException(e));
-            } finally {}
-        }
-
         // Console font color
         if (properties.consolefontcolor) {
             try {
@@ -303,6 +315,21 @@ window.wallpaperPropertyListener = {
                 consolecfg.alpha = properties.consolealpha.value / 100;
                 $('#console').css('opacity', consolecfg.alpha);
                 consolemsg('Console opacity set to {0}.'.format(consolecfg.alpha));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Console font size
+        if (properties.consolefontsize) {
+            try {
+                if (properties.consolefontsize.value > 0) {
+                    consolecfg.fontsize = properties.consolefontsize.value;
+                    $('#console').css('font-size', '{0}px'.format(consolecfg.fontsize));
+                    consolemsg('Console font-size set to {0}px.'.format(consolecfg.fontsize));
+                } else {
+                    consolemsg(parseError("Console font size can't be lower or equal than zero"));
+                }
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}

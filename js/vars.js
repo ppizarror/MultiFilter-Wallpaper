@@ -1,9 +1,9 @@
 /*
 MULTIFILTER-WALLPAPER
-Github: https://github.com/ppizarror/MultiFilter-wallpaper
+Github: https://github.com/ppizarror/MultiFilter-Wallpaper
 
 MIT License
-Copyright (c) 2017 Pablo Pizarro @ppizarror.com
+Copyright (c) 2017 Pablo Pizarro R. @ ppizarror.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ SOFTWARE.
 Theme version
 */
 var themedate = '(05/09/2017)';
-var themeversion = '3.1';
+var themeversion = '3.2';
 
 /*
 Effects
@@ -80,13 +80,13 @@ var effects = {
 /*
 Global variables
 */
-var defaultcolorcss = ''; // Default background color
+var defaultcolorcss = 'rgb(0, 0, 0)'; // Default background color
 var files = {}; // Files list
 var imagewaittime = 3000; // Time to load background images in miliseconds
 var israndom; // Checks if user selected random folder or single image
 var lastimg = ''; // Last used image
 var maxrandomiterations = 500; // Maximum iterations to randomize wallpaper
-var randomlimitsup = 0.05; // Random limit number
+var randomlimitsup = 0.03; // Random limit number
 var randomtime; // Random function timer in miliseconds
 var selectedfolder; // User random folder selection
 var selectedimg; // Actual image on background

@@ -1,9 +1,9 @@
 /*
 MULTIFILTER-WALLPAPER
-Github: https://github.com/ppizarror/MultiFilter-wallpaper
+Github: https://github.com/ppizarror/MultiFilter-Wallpaper
 
 MIT License
-Copyright (c) 2017 Pablo Pizarro @ppizarror.com
+Copyright (c) 2017 Pablo Pizarro R. @ ppizarror.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -86,12 +86,8 @@ function setWallpaper(file, showmsg) {
                 restoreCssEffects('#background-img');
             }
             try {
-                if (selectedimg != '') {
-                    setWallpaper(selectedimg, true);
-                } else {
-                    if (showmsg && defaultcolorcss != '') {
-                        consolemsg('Deleted wallpaper image and set color {0}.'.format(setRgbLineMsg(defaultcolorcss)));
-                    }
+                if (showmsg && defaultcolorcss != '') {
+                    consolemsg('Deleted wallpaper image and set color {0}.'.format(setRgbLineMsg(defaultcolorcss)));
                 }
             } catch (e) {
                 consolemsg(parseException(e));

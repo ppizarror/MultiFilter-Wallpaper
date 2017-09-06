@@ -1,9 +1,9 @@
 /*
 MULTIFILTER-WALLPAPER
-Github: https://github.com/ppizarror/MultiFilter-wallpaper
+Github: https://github.com/ppizarror/MultiFilter-Wallpaper
 
 MIT License
-Copyright (c) 2017 Pablo Pizarro @ppizarror.com
+Copyright (c) 2017 Pablo Pizarro R. @ ppizarror.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ var consolemsglist = ['<b>[CONSOLE] MultiFilter-Wallpaper v{0} {1} by ppizarror<
 var consolemsglistinfo = [''];
 var cssfilterseparator = ", " // Separator between filters
 var maxmsg = 13; // Maximum number of active messages
-var maxwordlengthdirs = 30; // Maximun src length of file shown on console
+var maxwordlengthdirs = 40; // Maximun src length of file shown on console
 var msgadded = 1; // Total messages added
 
 // Console configuration
@@ -37,6 +37,7 @@ var consolecfg = {
     "alpha": 1.0,
     "bgcolor": "",
     "fontcolor": "",
+    "fontsize": 12.5,
     "height": 200,
     "hideauthor": true,
     "scale": 1.0,
@@ -174,6 +175,9 @@ function wallpaperConsoleStatus(file) {
         b2 += 'Saturate {0}%'.format(effects.saturation.value);
     } else {
         b2 += 'Saturation disabled';
+    }
+    if (b2 != "") {
+        b2 += cssfilterseparator;
     }
     if (effects.sepia.enabled && effects.sepia.value > 0) {
         b2 += 'Sepia {0}%'.format(effects.sepia.value);
