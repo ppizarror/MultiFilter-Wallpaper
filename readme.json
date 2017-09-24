@@ -1,0 +1,42 @@
+{
+  "PROJECT": {
+    "NAME": "MultiFilter-Wallpaper",
+    "ICON": {
+      "IMAGE": "preview.jpg",
+      "ALT": "MultiFilter-Wallpaper",
+      "WIDTH": 200,
+      "HEIGHT": 200
+    },
+    "URL": "http://steamcommunity.com/sharedfiles/filedetails/?id=1125984664",
+    "URL_TITLE": "MultiFilter-Wallpaper"
+  },
+  "AUTHOR": {
+    "NAME": "Pablo Pizarro R.",
+    "URL": "http://ppizarror.com",
+    "ALT": "ppizarror",
+    "DATE": "2017",
+    "SECTION": {
+      "TITLE": "Author",
+      "SHOW": true
+    }
+  },
+  "DESCRIPTION": "",
+  "BADGES": {
+    "0": {
+      "IMAGE": "http://ppizarror.com/badges/author.svg",
+      "HREF": "http://ppizarror.com",
+      "ALT": "@ppizarror"
+    },
+    "1": {
+      "IMAGE": "http://ppizarror.com/badges/licensemit.svg",
+      "HREF": "https://opensource.org/licenses/MIT/",
+      "ALT": "MIT License"
+    },
+    "2": {
+      "IMAGE": "http://ppizarror.com/resources/images/blur-wallpaper/steam.svg",
+      "HREF": "http://steamcommunity.com/sharedfiles/filedetails/?id=1125984664",
+      "ALT": "Steam Workshop"
+    }
+  },
+  "CONTENT": "readme.content.md"
+}
