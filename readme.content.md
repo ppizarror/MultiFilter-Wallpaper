@@ -10,3 +10,6 @@
 - Invert
 - Sepia
 - Hue rotation angle
+
+## License
+This project is under MIT License [https://opensource.org/licenses/MIT]

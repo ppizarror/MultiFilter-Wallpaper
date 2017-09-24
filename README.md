@@ -22,5 +22,8 @@
 - Sepia
 - Hue rotation angle
 
+## License
+This project is under MIT License [https://opensource.org/licenses/MIT]
+
 ## Author
 <a href="http://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2017
