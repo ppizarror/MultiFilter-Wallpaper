@@ -39,9 +39,9 @@ var consolecfg = {
     "fontcolor": "",
     "fontsize": 12.5,
     "height": 200,
-    "hideauthor": true,
     "scale": 1.0,
     "show": false,
+    "showauthor": false,
     "width": 500
 }
 
@@ -75,18 +75,18 @@ function consolemsg(msg) {
     } catch (e) {} finally {}
 }
 
-function setConsoleStatus(status) {
+function setConsoleStatus() {
     // Enable/Disable console
-    if (status) {
+    if (consolecfg.show) {
         $('#console').css('display', 'block');
     } else {
         $('#console').css('display', 'none');
     }
 }
 
-function setAuthorStatus(status) {
+function setAuthorStatus() {
     // Enable/Disable author under console
-    if (status) {
+    if (consolecfg.showauthor) {
         $('#author').css('display', 'block');
     } else {
         $('#author').css('display', 'none');

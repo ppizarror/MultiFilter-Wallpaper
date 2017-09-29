@@ -1,5 +1,5 @@
 {
-	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image.\n\nVersion 3.2 (05/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/MultiFilter-Wallpaper",
+	"description" : "Wallpaper Engine theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image.\n\nVersion 3.3 (29/09/2017).\nAuthor: Pablo Pizarro R. @ ppizarror.com\nGithub: https://github.com/ppizarror/MultiFilter-Wallpaper",
 	"file" : "index.html",
 	"general" :
 	{
@@ -135,13 +135,13 @@
 				"type" : "slider",
 				"value" : 0
 			},
-			"hideauthor" :
+			"showauthor" :
 			{
 				"condition" : "showconsole.value && advancedoptions.value",
 				"order" : 15,
-				"text" : "Hide author",
+				"text" : "Show author",
 				"type" : "bool",
-				"value" : true
+				"value" : false
 			},
 			"huerotate" :
 			{

@@ -293,17 +293,17 @@ window.wallpaperPropertyListener = {
         if (properties.showconsole) {
             try {
                 consolecfg.show = properties.showconsole.value;
-                setConsoleStatus(consolecfg.show);
+                setConsoleStatus();
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
         }
 
         // Hide/Unhide author
-        if (properties.hideauthor) {
+        if (properties.showauthor) {
             try {
-                consolecfg.hideauthor = properties.hideauthor.value;
-                setAuthorStatus(!consolecfg.hideauthor);
+                consolecfg.showauthor = properties.showauthor.value;
+                setAuthorStatus();
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}

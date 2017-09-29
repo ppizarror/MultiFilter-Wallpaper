@@ -24,15 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-/*
-Theme version
-*/
-var themedate = '(05/09/2017)';
-var themeversion = '3.2';
+// Version
+var themedate = '(29/09/2017)';
+var themeversion = '3.3';
 
-/*
-Effects
-*/
 var effects = {
     "blur": {
         "value": 0,
@@ -76,10 +71,6 @@ var effects = {
         "enabled": true
     }
 }
-
-/*
-Global variables
-*/
 var defaultcolorcss = 'rgb(0, 0, 0)'; // Default background color
 var files = {}; // Files list
 var imagewaittime = 3000; // Time to load background images in miliseconds
