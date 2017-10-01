@@ -96,7 +96,6 @@ function setWallpaper(file, showmsg) {
     } catch (e) {
         consolemsg(parseException(e));
     } finally {}
-
 }
 
 function applyCssEffects(div_id) {
@@ -161,7 +160,7 @@ function clearRandomFunTimer() {
     // Delete timer of random wallpaper
     try {
         clearTimeout(timedrandomizefun);
-        consolemsg('Randomized function stopped.');
+        consolemsg('Randomize thread stopped.');
     } catch (e) {
         consolemsg(parseException(e));
     } finally {}

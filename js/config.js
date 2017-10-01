@@ -24,10 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-// Version
-var themedate = '(29/09/2017)';
-var themeversion = '3.3';
+// App version
+var themedate = '(01/10/2017)';
+var themeversion = '3.4';
 
+// Config
 var effects = {
     "blur": {
         "value": 0,

@@ -95,12 +95,12 @@ function setAuthorStatus() {
 
 function parseException(e) {
     // Set exception message
-    return "<span class='msgexception'>EXCEPTION!</span> {0} {1}.".format(e.message, e.stack);
+    return '<span class="msgexception">EXCEPTION!</span> {0} {1}.'.format(e.message, e.stack);
 }
 
 function parseError(e) {
     // Set exception message
-    return "<span class='msgexception'>ERROR!</span> {0}.".format(e);
+    return '<span class="msgexception">ERROR!</span> {0}.'.format(e);
 }
 
 function setRgbLineMsg(c) {

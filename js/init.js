@@ -52,7 +52,7 @@ function nextRandomImage() {
         for (i = 0; i < maxrandomiterations; i++) {
             r = Math.random();
             if (r < randomlimitsup) {
-                consolemsg('Chosing random image with {0} iterations. r={1}<{2}'.format(i, roundNumber(r, 2), randomlimitsup));
+                consolemsg('Random image chosen in {0} iterations. r={1}<{2}'.format(i, roundNumber(r, 2), randomlimitsup));
                 window.wallpaperRequestRandomFileForProperty('customrandomdirectory', randomImageResponse);
                 return;
             }
@@ -95,9 +95,9 @@ window.wallpaperPropertyListener = {
                     selectedimg = '';
                     lastimg = '';
                     nextRandomImage();
-                    if (randomtime > 0 && israndom) {
+                    if (israndom && randomtime > 0) {
                         clearRandomFunTimer();
-                        intervalsetminutesmsg('Randomized function', randomtime);
+                        intervalsetminutesmsg('Randomize thread', randomtime);
                         timedrandomizefun = setInterval(nextRandomImage, randomtime);
                     } else {
                         clearRandomFunTimer();
@@ -108,6 +108,23 @@ window.wallpaperPropertyListener = {
             } else {
                 clearAll();
             }
+        }
+
+        // Click to randomize
+        if (properties.clickrandomize) {
+            try {
+                if (israndom && randomtime > 0) {
+                    nextRandomImage();
+                    clearRandomFunTimer();
+                    intervalsetminutesmsg('Randomize thread', randomtime);
+                    timedrandomizefun = setInterval(nextRandomImage, randomtime);
+                    1111
+                } else {
+                    clearRandomFunTimer();
+                }
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
         }
 
         // Read single selected image
@@ -160,7 +177,7 @@ window.wallpaperPropertyListener = {
                 if (properties.blur.value >= 0) {
                     effects.blur.value = properties.blur.value;
                 } else {
-                    consolemsg(parseError("Blur can't be a negative number"));
+                    consolemsg(parseError('Blur can\'t be a negative number'));
                 }
                 setWallpaper(selectedimg, true);
             } catch (e) {
@@ -184,7 +201,7 @@ window.wallpaperPropertyListener = {
                 if (properties.brightness.value >= 0) {
                     effects.brightness.value = properties.brightness.value;
                 } else {
-                    consolemsg(parseError("Brightness can't be negative"));
+                    consolemsg(parseError('Brightness can\'t be negative'));
                 }
                 setWallpaper(selectedimg, true);
             } catch (e) {
@@ -198,7 +215,7 @@ window.wallpaperPropertyListener = {
                 if (properties.contrast.value >= 0) {
                     effects.contrast.value = properties.contrast.value;
                 } else {
-                    consolemsg(parseError("Contrast can't be negative"));
+                    consolemsg(parseError('Contrast can\'t be negative'));
                 }
                 setWallpaper(selectedimg, true);
             } catch (e) {
@@ -212,7 +229,7 @@ window.wallpaperPropertyListener = {
                 if (properties.saturation.value >= 0) {
                     effects.saturation.value = properties.saturation.value;
                 } else {
-                    consolemsg(parseError("Saturation can't be negative"));
+                    consolemsg(parseError('Saturation can\'t be negative'));
                 }
                 setWallpaper(selectedimg, true);
             } catch (e) {
@@ -257,7 +274,7 @@ window.wallpaperPropertyListener = {
                 try {
                     clearRandomFunTimer();
                     timedrandomizefun = setInterval(nextRandomImage, randomtime);
-                    intervalsetminutesmsg('Randomized function', randomtime);
+                    intervalsetminutesmsg('Randomize thread', randomtime);
                 } catch (e) {
                     consolemsg(parseException(e));
                 } finally {}
@@ -269,10 +286,13 @@ window.wallpaperPropertyListener = {
         // Console font color
         if (properties.consolefontcolor) {
             try {
-                consolecfg.fontcolor = createRGBColor(properties.consolefontcolor.value);
-                consolemsg('Console font color: {0}.'.format(setRgbLineMsg(consolecfg.fontcolor)));
-                $('#consoletext').css('color', consolecfg.fontcolor);
-                $('#author').css('color', 'rgb(255, 255, 255)');
+                fontvaluecolor = createRGBColor(properties.consolefontcolor.value);
+                if (consolecfg.fontcolor != fontvaluecolor) {
+                    consolecfg.fontcolor = fontvaluecolor;
+                    consolemsg('Console font color: {0}.'.format(setRgbLineMsg(consolecfg.fontcolor)));
+                    $('#consoletext').css('color', consolecfg.fontcolor);
+                    $('#author').css('color', 'rgb(255, 255, 255)');
+                }
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -281,9 +301,12 @@ window.wallpaperPropertyListener = {
         // Console background color
         if (properties.consolebgcolor) {
             try {
-                consolecfg.bgcolor = createRGBColor(properties.consolebgcolor.value);
-                consolemsg('Console background color: {0}.'.format(setRgbLineMsg(consolecfg.bgcolor)));
-                $('#consoletext').css('background-color', consolecfg.bgcolor);
+                consolebgcolor = createRGBColor(properties.consolebgcolor.value);
+                if (consolecfg.bgcolor != consolebgcolor) {
+                    consolecfg.bgcolor = createRGBColor(properties.consolebgcolor.value);
+                    consolemsg('Console background color: {0}.'.format(setRgbLineMsg(consolecfg.bgcolor)));
+                    $('#consoletext').css('background-color', consolecfg.bgcolor);
+                }
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
@@ -328,7 +351,7 @@ window.wallpaperPropertyListener = {
                     $('#console').css('font-size', '{0}px'.format(consolecfg.fontsize));
                     consolemsg('Console font-size set to {0}px.'.format(consolecfg.fontsize));
                 } else {
-                    consolemsg(parseError("Console font size can't be lower or equal than zero"));
+                    consolemsg(parseError('Console font size can\'t be lower or equal than zero'));
                 }
             } catch (e) {
                 consolemsg(parseException(e));
@@ -363,6 +386,19 @@ window.wallpaperPropertyListener = {
             try {
                 transitionduration = properties.transitioneffecttime.value;
                 consolemsg('Set transition duration to {0} ms.'.format(transitionduration));
+            } catch (e) {
+                consolemsg(parseException(e));
+            } finally {}
+        }
+
+        // Enable advanced options
+        if (properties.advancedoptions) {
+            try {
+                if (properties.advancedoptions.value) {
+                    consolemsg('Advanced options enabled.');
+                } else {
+                    consolemsg('Advanced options disabled.')
+                }
             } catch (e) {
                 consolemsg(parseException(e));
             } finally {}
