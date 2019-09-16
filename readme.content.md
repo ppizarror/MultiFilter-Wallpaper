@@ -1,4 +1,4 @@
-<a href="http://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image, incluiding:
+<a href="https://store.steampowered.com/app/431960/Wallpaper_Engine/">Wallpaper Engine</a> theme that loads a single image or picks a random image from a directory and create a multi-filter wallpaper image, incluiding:
 
 - Opacity
 - Scale
@@ -12,4 +12,5 @@
 - Hue rotation angle
 
 ## License
+
 This project is under MIT License [https://opensource.org/licenses/MIT]
